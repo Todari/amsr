@@ -7,9 +7,9 @@ import Apply from './pages/Apply';
 function App() {
   return (
 
-    <div className="flex flex-row justify-center min-h-screen">
+    <div className="flex flex-row justify-center min-h-screen min-w-[320px]">
       <div className="grow z-10 bg-slate-100" />
-      <div className="max-w-3xl w-screen">
+      <div className="max-w-3xl w-screen min-w-[320px]">
         <Header />
 
         <Routes>

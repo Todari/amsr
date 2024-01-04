@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import ApplySelectButton from "./ApplySelectButton";
+import STRING from "../constants/String";
 
 type ApplyGenderPickerProp = {
   onChange: (gender: boolean) => void
@@ -13,8 +14,8 @@ const ApplyGenderPicker = ({ onChange }: ApplyGenderPickerProp) => {
 
   return (<div>
     <div className='py-2'>
-      <div className='text-m font-medium text-stone-800'>
-        성별
+      <div className='text-sm font-medium text-stone-600 font-BMDOHYUN'>
+        {STRING.applyGenderTitle}
       </div>
     </div>
     <div className='flex flex-row gap-4'>

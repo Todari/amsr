@@ -50,8 +50,8 @@ const ApplySelectPicker = ({ onChange }: ApplySelectPickerProp) => {
   return (
     <div>
       <div className='py-2'>
-        <div className='text-m font-medium text-stone-800'>
-          MBTI
+        <div className='text-sm font-medium text-stone-600 font-BMDOHYUN'>
+          {STRING.applyMbtiTitle}
         </div>
       </div>
       <div className='flex flex-row gap-4'>

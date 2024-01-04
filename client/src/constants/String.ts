@@ -5,6 +5,8 @@ enum STRING {
   
   applyInputErrorPrefix = '유효하지 않은 ',
   applyInputErrorSuffix = '입니다.',
+  applyGenderTitle = '성별',
+  applyMbtiTitle = 'MBTI',
 
   mbtiE = 'E',
   mbtiI = 'I',

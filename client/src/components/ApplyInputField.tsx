@@ -14,7 +14,7 @@ const ApplyInputField = ({ title, name, placeholder, value, isError, handleChang
     return (
       <div>
         <div className='py-2'>
-          <div className='text-m font-medium text-rose-500'>
+          <div className='text-sm font-medium text-rose-500 font-BMDOHYUN'>
             {title}
           </div>
         </div>
@@ -35,7 +35,7 @@ const ApplyInputField = ({ title, name, placeholder, value, isError, handleChang
   }
   return (<div>
     <div className='py-2'>
-      <div className='text-m font-medium text-stone-800'>
+      <div className='text-sm font-medium text-stone-600 font-BMDOHYUN'>
         {title}
       </div>
     </div>
