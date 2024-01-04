@@ -15,7 +15,7 @@ const AmsrButton = ({ title }: buttonState) => {
         scale: 0.95,
         transition: { duration: 0.1 }
       }}>
-      <div className='text-center text-m font-normal text-white'>
+      <div className='text-center text-m font-BMDOHYUN font-normal text-white'>
         {title}
       </div>
     </motion.div>

@@ -1,4 +1,5 @@
 enum STRING {
+  headerLogo = 'AMSR대잔치',
   headerHistoryButton = 'History',
   headerApplyButton = '신청하기',
   
@@ -14,7 +15,8 @@ enum STRING {
   mbtiP = 'P',
   mbtiJ = 'J',
 
-  mainLandingTitle = '2024 신년맞이 아무사람대잔치',
+  mainLandingTitlePrefix = '2024 신년맞이',
+  mainLandingTitleSuffix = '아무사람대잔치',
   mainLandingSubTitle = '2024년 2월 3일 토요일',
   mainLandingApplyButton = '참가 신청하기',
 }

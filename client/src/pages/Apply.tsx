@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ApplyInputField from "../components/ApplyInputField";
 import APPLYINPUT from "../constants/ApplyInput";
 import ApplyMBTIPicker from "../components/ApplyMBTIPicker";
-import AmsrButton from "../components/AMSRButton";
+import AmsrButton from "../components/AmsrButton";
 import ApplyGenderPicker from "../components/ApplyGenderPicker";
 import STRING from "../constants/String";
 
@@ -25,7 +25,7 @@ type InfoError = {
 
 const Apply = () => {
   const [info, setInfo] = useState<Info>({
-    round: STRING.mainLandingTitle,
+    round: `${STRING.mainLandingTitlePrefix} ${STRING.mainLandingTitleSuffix}`,
     name: '',
     gender: true,
     phone: '',
@@ -91,7 +91,7 @@ const Apply = () => {
         <div className='w-full flex flex-col gap-4'>
           <ApplyInputField title={APPLYINPUT.round.title} name={APPLYINPUT.round.type} placeholder={""} value={info.round} isError={false} handleChange={() => { }} />
           <ApplyInputField title={APPLYINPUT.name.title} name={APPLYINPUT.name.type} placeholder={APPLYINPUT.name.placeholder} value={info.name} isError={isError.name} handleChange={handleChange} />
-          <ApplyGenderPicker onChange={handleGenderChange}/>
+          <ApplyGenderPicker onChange={handleGenderChange} />
           <ApplyInputField title={APPLYINPUT.phone.title} name={APPLYINPUT.phone.type} placeholder={APPLYINPUT.phone.placeholder} value={info.phone} isError={isError.phone} handleChange={handleChange} />
           <ApplyInputField title={APPLYINPUT.age.title} name={APPLYINPUT.age.type} placeholder={APPLYINPUT.age.placeholder} value={info.age} isError={isError.age} handleChange={handleChange} />
           <ApplyMBTIPicker onChange={handleMbtiChange} />

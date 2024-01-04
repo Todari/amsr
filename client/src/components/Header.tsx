@@ -1,6 +1,7 @@
 import { motion } from "framer-motion"
 import { useNavigate } from "react-router-dom";
 import STRING from "../constants/String";
+import AmsrLogo from "./AmsrLogo"
 
 const Header = () => {
   const navigate = useNavigate();
@@ -9,13 +10,17 @@ const Header = () => {
   const goHome = () => { navigate('/') }
 
   return (<div className='fixed top-0 px-8 w-full max-w-3xl flex flex-row gap-4 h-16 items-center bg-white drop-shadow-lg z-50'>
-    <motion.div className='basis-2/4 ' onClick={goHome}
-      whileTap={{
-        scale: 0.95,
-        transition: { duration: 0.1 }
-      }}>
-      로고 들어갈 자리
-    </motion.div>
+    <div className='basis-2/4 h-full py-3 flex'>
+      <motion.div className="flex justify-center items-end" onClick={goHome}
+        whileTap={{
+          scale: 0.95,
+          transition: { duration: 0.1 }
+        }}>
+        <div className="text-left text-3xl font-BMDOHYUN text-stone-800">
+          {STRING.headerLogo}
+        </div>
+      </motion.div>
+    </div>
     <div className='basis-1/4 h-full py-3'>
       <motion.div className='border-2 h-full rounded-lg flex items-center justify-center' onClick={goHistory}
         whileTap={{

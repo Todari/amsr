@@ -2,6 +2,9 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}",],
   theme: {
+    fontFamily: {
+      BMDOHYUN: ["BMDOHYEON"]
+    },
     extend: {},
   },
   plugins: [],
