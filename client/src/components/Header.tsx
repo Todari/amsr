@@ -1,7 +1,6 @@
 import { motion } from "framer-motion"
 import { useNavigate } from "react-router-dom";
 import STRING from "../constants/String";
-import AmsrLogo from "./AmsrLogo"
 
 const Header = () => {
   const navigate = useNavigate();
