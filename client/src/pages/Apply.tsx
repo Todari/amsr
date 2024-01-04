@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ApplyInputField from "../components/ApplyInputField";
 import APPLYINPUT from "../constants/ApplyInput";
-import ApplyMBTIPicker from "../components/ApplyMBTIPicker";
+import ApplyMbtiPicker from "../components/ApplyMbtiPicker";
 import AmsrButton from "../components/AmsrButton";
 import ApplyGenderPicker from "../components/ApplyGenderPicker";
 import STRING from "../constants/String";
@@ -94,7 +94,7 @@ const Apply = () => {
           <ApplyGenderPicker onChange={handleGenderChange} />
           <ApplyInputField title={APPLYINPUT.phone.title} name={APPLYINPUT.phone.type} placeholder={APPLYINPUT.phone.placeholder} value={info.phone} isError={isError.phone} handleChange={handleChange} />
           <ApplyInputField title={APPLYINPUT.age.title} name={APPLYINPUT.age.type} placeholder={APPLYINPUT.age.placeholder} value={info.age} isError={isError.age} handleChange={handleChange} />
-          <ApplyMBTIPicker onChange={handleMbtiChange} />
+          <ApplyMbtiPicker onChange={handleMbtiChange} />
           <ApplyInputField title={APPLYINPUT.invited.title} name={APPLYINPUT.invited.type} placeholder={APPLYINPUT.invited.placeholder} value={info.invited} isError={isError.invited} handleChange={handleChange} />
         </div>
         <div onClick={onClickSubmit}>

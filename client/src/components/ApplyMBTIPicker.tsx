@@ -1,7 +1,7 @@
 import STRING from "../constants/String";
 import ApplySelectButton from "./ApplySelectButton";
-import {  useEffect, useState } from "react";
-type ApplySelectPickerProp = {
+import { useEffect, useState } from "react";
+type ApplyMbtiPickerProp = {
   onChange: (mbtiStr: string) => void
 }
 
@@ -12,7 +12,7 @@ type Mbti = {
   p: boolean;
 }
 
-const ApplySelectPicker = ({ onChange }: ApplySelectPickerProp) => {
+const ApplyMbtiPicker = ({ onChange }: ApplyMbtiPickerProp) => {
   const [mbtiStr, setMbtiStr] = useState('ENTP')
   const [mbti, setMbti] = useState<Mbti>({
     e: true,
@@ -117,4 +117,4 @@ const ApplySelectPicker = ({ onChange }: ApplySelectPickerProp) => {
   )
 }
 
-export default ApplySelectPicker;
+export default ApplyMbtiPicker;

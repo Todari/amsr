@@ -5,7 +5,6 @@ import STRING from "../constants/String";
 const Header = () => {
   const navigate = useNavigate();
   const goApply = () => { navigate('/apply') };
-  const goHistory = () => { navigate('/history') };
   const goHome = () => { navigate('/') }
 
   return (<div className='fixed top-0 px-8 w-full min-w-[320px] max-w-3xl flex flex-row gap-4 h-16 items-center bg-white drop-shadow-lg z-50'>
