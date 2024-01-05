@@ -94,6 +94,7 @@ const Apply = () => {
     // validate();
   }, [info])
 
+
   // const validate = () => {
   //   if (
   //     APPLYINPUT.name.finalRegExp.test(info.name) &&

@@ -22,6 +22,12 @@ const ApplyCheckboxButton = ({ onChange }: ApplyCheckboxButtonProps) => {
     setModalOpened(!modalOpened);
   }
 
+  if (modalOpened) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = 'unset';
+  }
+
   return (<div>
     <div className='py-2'>
       <div className='text-sm font-medium text-stone-600 font-BMDOHYUN'>
