@@ -29,14 +29,14 @@ const ApplyCheckboxButton = ({ onChange }: ApplyCheckboxButtonProps) => {
         onChange={onChange}
         onClick={onClick} />
       <div className='flex flex-row'>
-        <div className='text-stone-800 text-sm'>
-          (필수)
+        <div className='text-stone-800 text-sm pr-2'>
+          {STRING.applyPrivacyPrefix}
         </div>
         <div className='text-sky-400 text-sm font-bold' onClick={() => { }}>
-          개인정보 제공내역
+        {STRING.applyPrivacyMiddle}
         </div>
         <div className='text-stone-800 text-sm'>
-          에 동의합니다.
+        {STRING.applyPrivacySuffix}
         </div>
       </div>
     </div>
