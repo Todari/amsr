@@ -5,9 +5,11 @@ import ApplyMbtiPicker from "../components/ApplyMbtiPicker";
 import AmsrButton from "../components/AmsrButton";
 import ApplyGenderPicker from "../components/ApplyGenderPicker";
 import STRING from "../constants/String";
+import ApplyCheckboxButton from "../components/ApplyCheckboxButton";
 
 type Info = {
   round: string;
+  privacy: boolean,
   name: string;
   gender: boolean;
   phone: string;
@@ -26,6 +28,7 @@ type InfoError = {
 const Apply = () => {
   const [info, setInfo] = useState<Info>({
     round: `${STRING.mainLandingTitlePrefix} ${STRING.mainLandingTitleSuffix}`,
+    privacy: false,
     name: '',
     gender: true,
     phone: '',
@@ -40,6 +43,13 @@ const Apply = () => {
     age: false,
     invited: false,
   })
+
+  const handlePrivacyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInfo({
+      ...info,
+      privacy: e.target.checked,
+    })
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInfo({
@@ -89,6 +99,7 @@ const Apply = () => {
     <div className="pt-20 p-8 space-y-4">
       <div className='flex flex-col gap-16 items-center'>
         <div className='w-full flex flex-col gap-4'>
+          <ApplyCheckboxButton onChange={handlePrivacyChange}/>
           <ApplyInputField title={APPLYINPUT.round.title} name={APPLYINPUT.round.type} placeholder={""} value={info.round} isError={false} handleChange={() => { }} />
           <ApplyInputField title={APPLYINPUT.name.title} name={APPLYINPUT.name.type} placeholder={APPLYINPUT.name.placeholder} value={info.name} isError={isError.name} handleChange={handleChange} />
           <ApplyGenderPicker onChange={handleGenderChange} />

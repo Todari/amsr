@@ -3,6 +3,7 @@ enum STRING {
   headerHistoryButton = 'History',
   headerApplyButton = '신청하기',
   
+  applyPrivacyTitle = '개인정보 제공동의',
   applyInputErrorPrefix = '유효하지 않은 ',
   applyInputErrorSuffix = '입니다.',
   applyGenderTitle = '성별',
