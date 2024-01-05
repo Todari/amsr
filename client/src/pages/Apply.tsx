@@ -96,7 +96,7 @@ const Apply = () => {
   }
 
   return (
-    <div className="pt-20 p-8 space-y-4">
+    <div className="pt-24 p-8 space-y-4">
       <div className='flex flex-col gap-16 items-center'>
         <div className='w-full flex flex-col gap-4'>
           <ApplyCheckboxButton onChange={handlePrivacyChange}/>

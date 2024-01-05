@@ -22,7 +22,7 @@ const ApplyCheckboxButton = ({ onChange }: ApplyCheckboxButtonProps) => {
         {STRING.applyPrivacyTitle}
       </div>
     </div>
-    <div className='flex flex-row gap-4'>
+    <div className='flex flex-row gap-4 h-12 items-center'>
       <input
         type="checkbox"
         checked={isChecked}
@@ -32,7 +32,7 @@ const ApplyCheckboxButton = ({ onChange }: ApplyCheckboxButtonProps) => {
         <div className='text-stone-800 text-sm'>
           (필수)
         </div>
-        <div className='text-sky-400 text-sm font-bold'>
+        <div className='text-sky-400 text-sm font-bold' onClick={() => { }}>
           개인정보 제공내역
         </div>
         <div className='text-stone-800 text-sm'>

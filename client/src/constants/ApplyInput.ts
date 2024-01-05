@@ -18,7 +18,7 @@ type InputType = {
 const APPLYINPUT: InputType = Object.freeze({
   round: {
     title: '회차',
-    type: 'title',
+    type: 'round',
     placeholder: '',
     minLength: 0,
     maxLength: 999,

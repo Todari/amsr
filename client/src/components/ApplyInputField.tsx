@@ -1,4 +1,5 @@
 import STRING from "../constants/String";
+import { useState } from "react";
 
 type ApplyInputFieldProps = {
   title: string;
@@ -10,6 +11,7 @@ type ApplyInputFieldProps = {
 }
 
 const ApplyInputField = ({ title, name, placeholder, value, isError, handleChange }: ApplyInputFieldProps) => {
+  let isDisabled = false;
   if (isError) {
     return (
       <div>
@@ -33,6 +35,9 @@ const ApplyInputField = ({ title, name, placeholder, value, isError, handleChang
       </div>
     )
   }
+  if (title === "회차") {
+    isDisabled = true;
+  }
   return (<div>
     <div className='py-2'>
       <div className='text-sm font-medium text-stone-600 font-BMDOHYUN'>
@@ -42,6 +47,7 @@ const ApplyInputField = ({ title, name, placeholder, value, isError, handleChang
     <input
       className="border-2 h-12 rounded-lg p-4 w-full text-sm font-medium"
       type="text"
+      disabled={isDisabled}
       name={name}
       id={title}
       placeholder={placeholder}
