@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import ApplySelectButton from "./ApplySelectButton";
-import STRING from "../constants/String";
 
 type ApplyBooleanPickerProp = {
   title: string,
