@@ -1,5 +1,6 @@
 import STRING from "../constants/String";
 import { useEffect, useState } from "react";
+import PrivacyModal from "./PrivacyModal";
 
 type ApplyCheckboxButtonProps = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
@@ -7,6 +8,7 @@ type ApplyCheckboxButtonProps = {
 
 const ApplyCheckboxButton = ({ onChange }: ApplyCheckboxButtonProps) => {
   const [isChecked, setIsChecked] = useState(false);
+  const [modalOpened, setModalOpened] = useState(false);
 
   const onClick = () => {
     setIsChecked(!isChecked);
@@ -15,6 +17,10 @@ const ApplyCheckboxButton = ({ onChange }: ApplyCheckboxButtonProps) => {
   useEffect(() => {
     console.log(isChecked);
   }, [isChecked])
+
+  const changeModalOpened = () => {
+    setModalOpened(!modalOpened);
+  }
 
   return (<div>
     <div className='py-2'>
@@ -32,14 +38,19 @@ const ApplyCheckboxButton = ({ onChange }: ApplyCheckboxButtonProps) => {
         <div className='text-stone-800 text-sm pr-2'>
           {STRING.applyPrivacyPrefix}
         </div>
-        <div className='text-sky-400 text-sm font-bold' onClick={() => { }}>
-        {STRING.applyPrivacyMiddle}
+        <div className='text-sky-400 text-sm font-bold' onClick={changeModalOpened}>
+          {STRING.applyPrivacyMiddle}
         </div>
         <div className='text-stone-800 text-sm'>
-        {STRING.applyPrivacySuffix}
+          {STRING.applyPrivacySuffix}
         </div>
       </div>
     </div>
+    {
+      modalOpened ?
+        <PrivacyModal changeOpen={changeModalOpened} />
+        : null
+    }
   </div>
   )
 }

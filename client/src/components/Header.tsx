@@ -7,7 +7,7 @@ const Header = () => {
   const goApply = () => { navigate('/apply') };
   const goHome = () => { navigate('/') }
 
-  return (<div className='fixed top-0 px-8 w-full min-w-[320px] max-w-3xl flex flex-row gap-4 h-16 items-center bg-white drop-shadow-lg z-50'>
+  return (<div className='fixed top-0 px-8 w-full min-w-[320px] max-w-3xl flex flex-row gap-4 h-16 items-center bg-white drop-shadow-lg z-10'>
     <div className='grow pt-3 pb-1 flex items-center justify-start'>
       <motion.div className="top-0" onClick={goHome}
         whileTap={{
