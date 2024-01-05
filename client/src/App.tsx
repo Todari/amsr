@@ -23,7 +23,10 @@ function App() {
   const handleScroll = () => {
     setScrollPosition({ prev: scrollPosition.current, current: window.scrollY });
     setIsScrollDown(scrollPosition.prev < scrollPosition.current)
-    console.log(isScrollDown)
+    if (window.scrollY < 50) {
+      setIsScrollDown(false)
+    }
+    console.log(scrollPosition.current)
   }
 
 
