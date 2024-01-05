@@ -1,12 +1,14 @@
+import { useState } from "react";
 import AmsrButton from "./AmsrButton";
 
 type PrivacyModalProp = {
-  changeOpen: () => void
+  handleOpenedChange: () => void
 }
 
-const PrivacyModal = (changeOpen: PrivacyModalProp) => {
+const PrivacyModal = ({ handleOpenedChange }: PrivacyModalProp) => {
+
   return (
-    <div className="flex fixed inset-0 z-20 w-screen h-screen bg-stone-800 bg-opacity-50 items-center justify-center">
+    <div className="flex fixed inset-0 z-20 w-screen h-screen bg-stone-800 bg-opacity-50 items-center justify-center" onClick={handleOpenedChange}>
       <div className="z-30 h-3/4 w-5/6 rounded-3xl bg-white max-w-2xl max-h-[720px]">
         <div className="h-full flex flex-col py-16 px-8 items-center">
           <div className="font-BMDOHYUN text-stone-800 text-center">
@@ -40,7 +42,7 @@ const PrivacyModal = (changeOpen: PrivacyModalProp) => {
               개인정보 제공에 동의한다면, 동의 버튼을 체크해 주세요!
             </div>
           </div>
-          <AmsrButton title={'닫기'} disabled={false} onClick={changeOpen} />
+          <AmsrButton title={'닫기'} disabled={false} onClick={handleOpenedChange} />
         </div>
       </div>
     </div>

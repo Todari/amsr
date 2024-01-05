@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 type buttonState = {
   title: string
   disabled: boolean,
-  onClick: any
+  onClick: () => void
 }
 
 const AmsrButton = ({ title, disabled, onClick }: buttonState) => {

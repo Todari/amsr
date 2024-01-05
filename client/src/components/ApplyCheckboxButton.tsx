@@ -48,7 +48,7 @@ const ApplyCheckboxButton = ({ onChange }: ApplyCheckboxButtonProps) => {
     </div>
     {
       modalOpened ?
-        <PrivacyModal changeOpen={changeModalOpened} />
+        <PrivacyModal handleOpenedChange={changeModalOpened} />
         : null
     }
   </div>
