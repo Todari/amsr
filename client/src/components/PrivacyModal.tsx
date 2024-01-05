@@ -1,5 +1,6 @@
 import { useState } from "react";
 import AmsrButton from "./AmsrButton";
+import STRING from "../constants/String";
 
 type PrivacyModalProp = {
   handleOpenedChange: () => void
@@ -12,34 +13,37 @@ const PrivacyModal = ({ handleOpenedChange }: PrivacyModalProp) => {
       <div className="z-30 h-3/4 w-5/6 rounded-3xl bg-white max-w-2xl max-h-[720px]">
         <div className="h-full flex flex-col py-16 px-8 items-center">
           <div className="font-BMDOHYUN text-stone-800 text-center">
-            개인정보 제공동의
+            {STRING.privacyModalTitle}
           </div>
           <div className='grow flex flex-col gap-8 py-8 max-w-sm'>
             <div className="text-stone-800">
-              아무사람대잔치는 개인정보보호법 제 15조 및 제 22조에 따라 참가자 여러분들의 동의를 얻고자 합니다.
+            {STRING.privacyModalStart}
             </div>
             <div className="flex flex-col gap-2">
               <div className="text-stone-800">
-                1. 개인정보 수집 및 이용 목적
+              {STRING.privacyModalP1}
               </div>
               <div className="text-stone-800">
-                - 행사 관련 업무 및 관련 안내
+              {STRING.privacyModalP2}
               </div>
               <div className="text-stone-800">
-                2. 수집하는 개인정보 항목
+              {STRING.privacyModalP3}
               </div>
               <div className="text-stone-800">
-                - 성명, 휴대전화 번호, 계좌번호
+              {STRING.privacyModalP4}
               </div>
               <div className="text-stone-800">
-                3. 보유 및 이용 기간
+              {STRING.privacyModalP5}
               </div>
               <div className="text-stone-800">
-                - 행사 후 즉시 폐기
+              {STRING.privacyModalP6}
+              </div>
+              <div className="text-stone-800">
+              {STRING.privacyModalP7}
               </div>
             </div>
             <div className="text-stone-800">
-              개인정보 제공에 동의한다면, 동의 버튼을 체크해 주세요!
+            {STRING.privacyModalEnd}
             </div>
           </div>
           <AmsrButton title={'닫기'} disabled={false} onClick={handleOpenedChange} />
