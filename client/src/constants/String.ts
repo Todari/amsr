@@ -13,6 +13,9 @@ enum STRING {
   applyGenderFirst = '남',
   applyGenderSecond = '여',
   applyMbtiTitle = 'MBTI',
+  applyChangeSeatTitle = '행사 중 자리변경',
+  applyChangeSeatFirst = '바꿀래요',
+  applyChangeSeatSecond = '안 바꿀래요',
 
   privacyModalTitle = '개인정보 제공동의',
   privacyModalStart = '아무사람대잔치는 개인정보보호법 제 15조 및 제 22조에 따라 참가자 여러분들의 동의를 얻고자 합니다.',

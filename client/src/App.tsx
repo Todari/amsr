@@ -26,7 +26,6 @@ function App() {
     if (window.scrollY < 50) {
       setIsScrollDown(false)
     }
-    console.log(scrollPosition.current)
   }
 
 

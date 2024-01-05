@@ -15,7 +15,8 @@ type Info = {
   phone: string;
   age: string;
   mbti: string;
-  invited: string;
+  invited: string,
+  changeSeat: boolean,
 }
 
 type InfoError = {
@@ -35,6 +36,7 @@ const Apply = () => {
     age: '',
     mbti: '',
     invited: '',
+    changeSeat: true,
   });
 
   const [isError, setIsError] = useState<InfoError>({
@@ -71,6 +73,13 @@ const Apply = () => {
     setInfo({
       ...info,
       gender: value
+    })
+  }
+
+  const handleChangeSeatChange = (value: boolean) => {
+    setInfo({
+      ...info,
+      changeSeat: value
     })
   }
 
@@ -122,6 +131,7 @@ const Apply = () => {
           <ApplyInputField title={APPLYINPUT.age.title} name={APPLYINPUT.age.type} placeholder={APPLYINPUT.age.placeholder} value={info.age} isError={isError.age} handleChange={handleChange} />
           <ApplyMbtiPicker onChange={handleMbtiChange} />
           <ApplyInputField title={APPLYINPUT.invited.title} name={APPLYINPUT.invited.type} placeholder={APPLYINPUT.invited.placeholder} value={info.invited} isError={isError.invited} handleChange={handleChange} />
+          <ApplyBooleanPicker title={STRING.applyChangeSeatTitle} first={STRING.applyChangeSeatFirst} second={STRING.applyChangeSeatSecond} onChange={handleChangeSeatChange} />
         </div>
         <div onClick={onClickSubmit}>
           <AmsrButton title={STRING.headerApplyButton} disabled={true} onClick={onClickSubmit}/>
