@@ -4,6 +4,8 @@ const Main = () => {
   return (
     <div>
       <MainLanding />
+      <MainLanding />
+      <MainLanding />
     </div>)
 }
 

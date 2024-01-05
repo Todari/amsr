@@ -1,13 +1,29 @@
 import { motion } from "framer-motion"
 import { useNavigate } from "react-router-dom";
 import STRING from "../constants/String";
+import { useEffect, useState } from "react";
 
-const Header = () => {
+type HeaderProp = {
+  visible: boolean
+}
+
+const Header = ({ visible }: HeaderProp) => {
   const navigate = useNavigate();
   const goApply = () => { navigate('/apply') };
   const goHome = () => { navigate('/') }
+  const [y, setY] = useState(0);
 
-  return (<div className='fixed top-0 px-8 w-full min-w-[320px] max-w-3xl flex flex-row gap-4 h-16 items-center bg-white drop-shadow-lg z-10'>
+  useEffect(() => {
+    if (visible) {
+      setY(0)
+    } else {
+      setY(-80)
+    }
+  }, [visible])
+
+  return (<motion.div className='fixed top-0 px-8 w-full min-w-[320px] max-w-3xl flex flex-row gap-4 h-16 items-center bg-white drop-shadow-lg z-10'
+    animate={{ y }}
+    transition={{duration: 0.3}}>
     <div className='grow pt-3 pb-1 flex items-center justify-start'>
       <motion.div className="top-0" onClick={goHome}
         whileTap={{
@@ -30,7 +46,7 @@ const Header = () => {
         </div>
       </motion.div>
     </div>
-  </div >)
+  </motion.div >)
 }
 
 export default Header;
