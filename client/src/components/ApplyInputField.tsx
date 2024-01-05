@@ -27,7 +27,7 @@ const ApplyInputField = ({ title, name, placeholder, value, isError, handleChang
           value={value}
           onChange={handleChange}
         />
-        <div className="text-rose-500">
+        <div className="pt-1 text-rose-500 text-sm">
           {STRING.applyInputErrorPrefix}{title}{STRING.applyInputErrorSuffix}
         </div>
       </div>

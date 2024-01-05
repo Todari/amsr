@@ -20,7 +20,7 @@ const Header = () => {
       </motion.div>
     </div>
     <div className='basis-1/4 h-full py-3.5'>
-      <motion.div className='bg-pink-400 h-full rounded-lg flex items-center justify-center' onClick={goApply}
+      <motion.div className='bg-emerald-400 h-full rounded-lg flex items-center justify-center' onClick={goApply}
         whileTap={{
           scale: 0.95,
           transition: { duration: 0.1 }

@@ -6,7 +6,7 @@ type buttonState = {
 
 const AmsrButton = ({ title }: buttonState) => {
   return (
-    <motion.div className=' w-48 pt-4 pb-3 rounded-lg flex justify-center inset-0 bg-pink-400 drop-shadow-xl'
+    <motion.div className=' w-48 pt-4 pb-3 rounded-lg flex justify-center inset-0 bg-emerald-400 drop-shadow-xl'
       whileHover={{
         scale: 1.05,
         transition: { duration: 0.2 }
