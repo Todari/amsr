@@ -3,7 +3,7 @@ import ApplyInputField from "../components/ApplyInputField";
 import APPLYINPUT from "../constants/ApplyInput";
 import ApplyMbtiPicker from "../components/ApplyMbtiPicker";
 import AmsrButton from "../components/AmsrButton";
-import ApplyGenderPicker from "../components/ApplyGenderPicker";
+import ApplyBooleanPicker from "../components/ApplyBooleanPicker";
 import STRING from "../constants/String";
 import ApplyCheckboxButton from "../components/ApplyCheckboxButton";
 
@@ -117,7 +117,7 @@ const Apply = () => {
           <ApplyCheckboxButton onChange={handlePrivacyChange} />
           <ApplyInputField title={APPLYINPUT.round.title} name={APPLYINPUT.round.type} placeholder={""} value={info.round} isError={false} handleChange={() => { }} />
           <ApplyInputField title={APPLYINPUT.name.title} name={APPLYINPUT.name.type} placeholder={APPLYINPUT.name.placeholder} value={info.name} isError={isError.name} handleChange={handleChange} />
-          <ApplyGenderPicker onChange={handleGenderChange} />
+          <ApplyBooleanPicker title={STRING.applyGenderTitle} first={STRING.applyGenderFirst} second={STRING.applyGenderSecond} onChange={handleGenderChange} />
           <ApplyInputField title={APPLYINPUT.phone.title} name={APPLYINPUT.phone.type} placeholder={APPLYINPUT.phone.placeholder} value={info.phone} isError={isError.phone} handleChange={handleChange} />
           <ApplyInputField title={APPLYINPUT.age.title} name={APPLYINPUT.age.type} placeholder={APPLYINPUT.age.placeholder} value={info.age} isError={isError.age} handleChange={handleChange} />
           <ApplyMbtiPicker onChange={handleMbtiChange} />

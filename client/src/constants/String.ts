@@ -10,6 +10,8 @@ enum STRING {
   applyInputErrorPrefix = '유효하지 않은 ',
   applyInputErrorSuffix = '입니다.',
   applyGenderTitle = '성별',
+  applyGenderFirst = '남',
+  applyGenderSecond = '여',
   applyMbtiTitle = 'MBTI',
 
   privacyModalTitle = '개인정보 제공동의',

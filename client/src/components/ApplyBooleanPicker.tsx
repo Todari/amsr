@@ -2,11 +2,14 @@ import { useEffect, useState } from "react"
 import ApplySelectButton from "./ApplySelectButton";
 import STRING from "../constants/String";
 
-type ApplyGenderPickerProp = {
+type ApplyBooleanPickerProp = {
+  title: string,
+  first: string,
+  second: string,
   onChange: (gender: boolean) => void
 }
 
-const ApplyGenderPicker = ({ onChange }: ApplyGenderPickerProp) => {
+const ApplyBooleanPicker = ({ title, first, second, onChange }: ApplyBooleanPickerProp) => {
   const [gender, setGender] = useState<boolean>(true);
   useEffect(() => {
     onChange(gender);
@@ -15,22 +18,22 @@ const ApplyGenderPicker = ({ onChange }: ApplyGenderPickerProp) => {
   return (<div>
     <div className='py-2'>
       <div className='text-sm font-medium text-stone-600 font-BMDOHYUN'>
-        {STRING.applyGenderTitle}
+        {title}
       </div>
     </div>
     <div className='flex flex-row gap-4'>
       <div className='grow'>
         <div onClick={() => setGender(true)}>
-          <ApplySelectButton prop='남' active={gender} />
+          <ApplySelectButton prop={first} active={gender} />
         </div>
       </div>
       <div className='grow'>
         <div onClick={() => setGender(false)}>
-          <ApplySelectButton prop='여' active={!gender} />
+          <ApplySelectButton prop={second} active={!gender} />
         </div>
       </div>
     </div>
   </div>
   )
 }
-export default ApplyGenderPicker
+export default ApplyBooleanPicker
