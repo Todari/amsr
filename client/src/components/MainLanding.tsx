@@ -1,7 +1,11 @@
 import AmsrButton from "./AmsrButton"
 import STRING from "../constants/String"
+import { useNavigate } from "react-router-dom";
 
 const MainLanding = () => {
+  const navigate = useNavigate();
+  const goApply = () => { navigate('/apply') };
+
   return (
     <div className='h-screen max-h-[1440px] flex flex-col items-center justify-center'>
       <div className='w-full flex flex-col items-center justify-center'>
@@ -19,7 +23,7 @@ const MainLanding = () => {
           </div>
         </div>
         <div className='p-8'>
-          <AmsrButton title={STRING.mainLandingApplyButton} disabled={false} />
+          <AmsrButton title={STRING.mainLandingApplyButton} disabled={false} onClick={goApply}/>
         </div>
       </div>
     </div>

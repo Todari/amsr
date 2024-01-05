@@ -28,7 +28,7 @@ const ApplyCheckboxButton = ({ onChange }: ApplyCheckboxButtonProps) => {
         checked={isChecked}
         onChange={onChange}
         onClick={onClick} />
-      <div className='flex flex-row gap-2'>
+      <div className='flex flex-row'>
         <div className='text-stone-800 text-sm'>
           (필수)
         </div>
@@ -36,7 +36,7 @@ const ApplyCheckboxButton = ({ onChange }: ApplyCheckboxButtonProps) => {
           개인정보 제공내역
         </div>
         <div className='text-stone-800 text-sm'>
-          에 동의합니다
+          에 동의합니다.
         </div>
       </div>
     </div>

@@ -123,7 +123,7 @@ const Apply = () => {
           <ApplyInputField title={APPLYINPUT.invited.title} name={APPLYINPUT.invited.type} placeholder={APPLYINPUT.invited.placeholder} value={info.invited} isError={isError.invited} handleChange={handleChange} />
         </div>
         <div onClick={onClickSubmit}>
-          <AmsrButton title={STRING.headerApplyButton} disabled={true} />
+          <AmsrButton title={STRING.headerApplyButton} disabled={true} onClick={onClickSubmit}/>
         </div>
       </div>
     </div >
