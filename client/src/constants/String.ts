@@ -5,7 +5,7 @@ enum STRING {
   
   applyPrivacyPrefix = '(필수)',
   applyPrivacyMiddle = '개인정보 제공내역',
-  applyPrivacySuffix = '에 동의합니다.',
+  applyPrivacySuffix = '에 동의해요 :)',
   applyPrivacyTitle = '개인정보 제공동의',
   applyInputErrorPrefix = '유효하지 않은 ',
   applyInputErrorSuffix = '입니다.',
@@ -16,6 +16,11 @@ enum STRING {
   applyChangeSeatTitle = '행사 중 자리변경',
   applyChangeSeatFirst = '바꿀래요',
   applyChangeSeatSecond = '안 바꿀래요',
+  applyBottlesTitle = '소주 기준 주량',
+  applyBottlesFirst = '전혀 못마셔요',
+  applyBottlesSecond = '1병 정도 마셔요',
+  applyBottlesThird = '2병 정도 마셔요',
+  applyBottlesFourth = '소주는 물이에요',
 
   privacyModalTitle = '개인정보 제공동의',
   privacyModalStart = '아무사람대잔치는 개인정보보호법 제 15조 및 제 22조에 따라 참가자 여러분들의 동의를 얻고자 합니다.',

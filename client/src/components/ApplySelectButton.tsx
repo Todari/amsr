@@ -13,7 +13,7 @@ const ApplySelectButton = ({ prop, active }: ApplySelectButtonProp) => {
           scale: 0.95,
           transition: { duration: 0.1 }
         }}>
-        <div className='absolute pt-1 text-l text-bold text-center text-emerald-400 align-middle font-BMDOHYUN'>
+        <div className='absolute pt-1 text-sm text-bold text-center text-emerald-400 align-middle font-BMDOHYUN'>
           {prop}
         </div>
       </motion.div>
@@ -24,7 +24,7 @@ const ApplySelectButton = ({ prop, active }: ApplySelectButtonProp) => {
         scale: 0.95,
         transition: { duration: 0.1 }
       }}>
-      <div className='absolute pt-1 text-l text-bold text-center text-stone-400 align-middle font-BMDOHYUN'>
+      <div className='absolute pt-1 text-sm text-bold text-center text-stone-400 align-middle font-BMDOHYUN'>
         {prop}
       </div>
     </motion.div>

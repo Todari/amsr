@@ -18,7 +18,7 @@ const AmsrButton = ({ title, disabled, onClick }: buttonState) => {
           scale: 0.95,
           transition: { duration: 0.1 }
         }}>
-        <div className='text-center text-m font-BMDOHYUN font-normal text-white'>
+        <div className='text-center text-base font-BMDOHYUN font-normal text-white'>
           {title}
         </div>
       </motion.div>
@@ -26,7 +26,7 @@ const AmsrButton = ({ title, disabled, onClick }: buttonState) => {
   }
   return (
     <div className=' w-48 pt-4 pb-3 rounded-lg flex justify-center inset-0 bg-stone-400 drop-shadow-xl'>
-      <div className='text-center text-m font-BMDOHYUN font-normal text-white'>
+      <div className='text-center text-base font-BMDOHYUN font-normal text-white'>
         {title}
       </div>
     </div>

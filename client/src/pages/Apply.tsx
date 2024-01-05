@@ -6,6 +6,7 @@ import AmsrButton from "../components/AmsrButton";
 import ApplyBooleanPicker from "../components/ApplyBooleanPicker";
 import STRING from "../constants/String";
 import ApplyCheckboxButton from "../components/ApplyCheckboxButton";
+import ApplyFourItemPicker from "../components/ApplyFourItemPicker";
 
 type Info = {
   round: string;
@@ -17,6 +18,7 @@ type Info = {
   mbti: string;
   invited: string,
   changeSeat: boolean,
+  bottles: number,
 }
 
 type InfoError = {
@@ -37,6 +39,7 @@ const Apply = () => {
     mbti: '',
     invited: '',
     changeSeat: true,
+    bottles: 0,
   });
 
   const [isError, setIsError] = useState<InfoError>({
@@ -80,6 +83,13 @@ const Apply = () => {
     setInfo({
       ...info,
       changeSeat: value
+    })
+  }
+
+  const handleBottlesChange = (value: number) => {
+    setInfo({
+      ...info,
+      bottles: value
     })
   }
 
@@ -132,6 +142,7 @@ const Apply = () => {
           <ApplyMbtiPicker onChange={handleMbtiChange} />
           <ApplyInputField title={APPLYINPUT.invited.title} name={APPLYINPUT.invited.type} placeholder={APPLYINPUT.invited.placeholder} value={info.invited} isError={isError.invited} handleChange={handleChange} />
           <ApplyBooleanPicker title={STRING.applyChangeSeatTitle} first={STRING.applyChangeSeatFirst} second={STRING.applyChangeSeatSecond} onChange={handleChangeSeatChange} />
+          <ApplyFourItemPicker title={STRING.applyBottlesTitle} items={[STRING.applyBottlesFirst, STRING.applyBottlesSecond, STRING.applyBottlesThird, STRING.applyBottlesFourth]} onChange={handleBottlesChange}/>
         </div>
         <div onClick={onClickSubmit}>
           <AmsrButton title={STRING.headerApplyButton} disabled={true} onClick={onClickSubmit}/>
