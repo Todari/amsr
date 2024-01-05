@@ -9,10 +9,10 @@ type ApplyBooleanPickerProp = {
 }
 
 const ApplyBooleanPicker = ({ title, first, second, onChange }: ApplyBooleanPickerProp) => {
-  const [gender, setGender] = useState<boolean>(true);
+  const [boolean, setBoolean] = useState<boolean>(true);
   useEffect(() => {
-    onChange(gender);
-  }, [gender])
+    onChange(boolean);
+  }, [boolean])
 
   return (<div>
     <div className='py-2'>
@@ -22,13 +22,13 @@ const ApplyBooleanPicker = ({ title, first, second, onChange }: ApplyBooleanPick
     </div>
     <div className='flex flex-row gap-4'>
       <div className='grow'>
-        <div onClick={() => setGender(true)}>
-          <ApplySelectButton prop={first} active={gender} />
+        <div onClick={() => setBoolean(true)}>
+          <ApplySelectButton prop={first} active={boolean} />
         </div>
       </div>
       <div className='grow'>
-        <div onClick={() => setGender(false)}>
-          <ApplySelectButton prop={second} active={!gender} />
+        <div onClick={() => setBoolean(false)}>
+          <ApplySelectButton prop={second} active={!boolean} />
         </div>
       </div>
     </div>
