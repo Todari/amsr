@@ -15,11 +15,11 @@ const MainLanding = () => {
         </div>
         <div className='p-2'>
           <div className='text-center text-l font-BMDOHYUN font-medium text-stone-500'>
-          {STRING.mainLandingSubTitle}
+            {STRING.mainLandingSubTitle}
           </div>
         </div>
         <div className='p-8'>
-          <AmsrButton title={STRING.mainLandingApplyButton} />
+          <AmsrButton title={STRING.mainLandingApplyButton} disabled={false} />
         </div>
       </div>
     </div>

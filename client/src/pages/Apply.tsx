@@ -42,7 +42,9 @@ const Apply = () => {
     phone: false,
     age: false,
     invited: false,
-  })
+  });
+
+  // const [isValidate, setIsValidated] = useState(false)
 
   const handlePrivacyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInfo({
@@ -89,7 +91,19 @@ const Apply = () => {
       age: info.age !== '' && !APPLYINPUT.age.regExp.test(info.age),
       invited: info.invited !== '' && !APPLYINPUT.invited.regExp.test(info.invited),
     })
+    // validate();
   }, [info])
+
+  // const validate = () => {
+  //   if (
+  //     APPLYINPUT.name.finalRegExp.test(info.name) &&
+  //     APPLYINPUT.phone.finalRegExp.test(info.phone) &&
+  //     APPLYINPUT.age.finalRegExp.test(info.age) &&
+  //     APPLYINPUT.invited.finalRegExp.test(info.invited)
+  //   ) {
+  //     setIsValidated(true);
+  //   }
+  // }
 
   const onClickSubmit = () => {
 
@@ -99,7 +113,7 @@ const Apply = () => {
     <div className="pt-24 p-8 space-y-4">
       <div className='flex flex-col gap-16 items-center'>
         <div className='w-full flex flex-col gap-4'>
-          <ApplyCheckboxButton onChange={handlePrivacyChange}/>
+          <ApplyCheckboxButton onChange={handlePrivacyChange} />
           <ApplyInputField title={APPLYINPUT.round.title} name={APPLYINPUT.round.type} placeholder={""} value={info.round} isError={false} handleChange={() => { }} />
           <ApplyInputField title={APPLYINPUT.name.title} name={APPLYINPUT.name.type} placeholder={APPLYINPUT.name.placeholder} value={info.name} isError={isError.name} handleChange={handleChange} />
           <ApplyGenderPicker onChange={handleGenderChange} />
@@ -109,7 +123,7 @@ const Apply = () => {
           <ApplyInputField title={APPLYINPUT.invited.title} name={APPLYINPUT.invited.type} placeholder={APPLYINPUT.invited.placeholder} value={info.invited} isError={isError.invited} handleChange={handleChange} />
         </div>
         <div onClick={onClickSubmit}>
-          <AmsrButton title={STRING.headerApplyButton} />
+          <AmsrButton title={STRING.headerApplyButton} disabled={true} />
         </div>
       </div>
     </div >
