@@ -11,7 +11,7 @@ type scrollPosition = {
 
 function App() {
   const [scrollPosition, setScrollPosition] = useState<scrollPosition>({ prev: window.scrollY, current: window.scrollY })
-  const [isScrollDown, setIsScrollDown] = useState(false);
+  const [isScrollDown, setIsScrollDown] = useState(true);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -22,9 +22,9 @@ function App() {
 
   const handleScroll = () => {
     setScrollPosition({ prev: scrollPosition.current, current: window.scrollY });
-    setIsScrollDown(scrollPosition.prev < scrollPosition.current)
+    setIsScrollDown(scrollPosition.prev <= scrollPosition.current)
     if (window.scrollY < 50) {
-      setIsScrollDown(false)
+      setIsScrollDown(true)
     }
     console.log(scrollPosition.current)
   }
