@@ -18,7 +18,7 @@ function App() {
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [window.scrollY])
+  }, [])
 
   const handleScroll = () => {
     setScrollPosition({ prev: scrollPosition.current, current: window.scrollY });

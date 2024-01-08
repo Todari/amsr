@@ -2,22 +2,34 @@ import AmsrButton from "./AmsrButton"
 import STRING from "../constants/String"
 import { useNavigate } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const MainLanding = () => {
-  const viewHeight = window.screen.height;
+  const [screenSize, setScreenSize] = useState({
+    width: window.screen.width,
+    height: window.screen.height
+  })
+
+  useEffect(() => {
+    window.addEventListener('resize', handleScreenSize)
+    return () => {
+      window.removeEventListener('resize', handleScreenSize)
+    }
+  }, [])
+
+  const handleScreenSize = () => {
+    setScreenSize({
+      width: window.screen.width,
+      height: window.screen.height
+    })
+  }
   const navigate = useNavigate();
   const goApply = () => { navigate('/apply') };
 
   const landingContainerRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: landingContainerRef});
+  const { scrollYProgress } = useScroll({ target: landingContainerRef });
   const scaleTransform = useTransform(scrollYProgress, [0, 1], [0.75, 1.2])
-  const offsetTransform = useTransform(scrollYProgress, [0.75, 1], [0, - viewHeight])
-
-  useEffect(() => {
-    console.log(scrollYProgress.get())
-    console.log(viewHeight)
-  }, [])
+  const offsetTransform = useTransform(scrollYProgress, [0.75, 1], [0, - screenSize.height])
 
 
   return (
