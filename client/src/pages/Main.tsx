@@ -1,11 +1,12 @@
+import MainInfo from "../components/MainInfo"
 import MainLanding from "../components/MainLanding"
+
 
 const Main = () => {
   return (
-    <div>
-      <MainLanding />
-      <MainLanding />
-      <MainLanding />
+    <div className= ''>
+      <MainLanding />     
+      <MainInfo />
     </div>)
 }
 
