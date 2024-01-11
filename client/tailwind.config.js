@@ -5,7 +5,14 @@ module.exports = {
     fontFamily: {
       BMDOHYUN: ["BMDOHYEON"]
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'main-landing': "url(./asset/mainLandingBackground.jpg)"
+      },
+      boxShadow: {
+        'clay': 'inset -16px -16px 16px 0 rgb(0 0 0 / 0.16)',
+      }
+    },
   },
   plugins: [],
 }
