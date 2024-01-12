@@ -1,9 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./*"]
-    },
     "target": "es5",
     "lib": [
       "dom",
@@ -25,6 +21,9 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
-  ]
+    "src",
+    "src/components/AmsrButton.tsx",
+    "src/components/ApplyBooleanPickersrc/components/ApplyCheckboxButton.tsxttonsrc/components/ApplyFourItemPicker.tsxckersrc/components/ApplyInputField.tsxieldsrc/components/ApplyMbtiPicker.tsxckersrc/components/ApplySelectButton.tsxttonsrc/components/Header.tsxadersrc/components/MainInfo.tsxInfosrc/components/MainLanding.tsxdingsrc/components/PrivacyModal.tsxodal.tsx"
+  ],
+  "extends": "./tsconfig.paths.json",
 }

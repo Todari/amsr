@@ -3,10 +3,9 @@ enum STRING {
   headerHistoryButton = 'History',
   headerApplyButton = '신청하기',
   
-  applyPrivacyPrefix = '(필수)',
-  applyPrivacyMiddle = '개인정보 제공내역',
-  applyPrivacySuffix = '에 동의해요 :)',
-  applyPrivacyTitle = '개인정보 제공동의',
+  applyPrivacyTitle = '(필수) 개인정보 제공에 동의해요 :)',
+  applyPrivacyInfo = '개인정보 제공내역을 확인하려면 여기를 클릭해 주세요!',
+  
   applyInputErrorPrefix = '유효하지 않은 ',
   applyInputErrorSuffix = '입니다.',
   applyGenderTitle = '성별',

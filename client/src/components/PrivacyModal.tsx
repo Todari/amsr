@@ -48,7 +48,7 @@ const PrivacyModal = ({ handleOpenedChange }: PrivacyModalProp) => {
             </div>
           </div>
           <div className="grow flex items-center">
-            <AmsrButton title={'닫기'} disabled={false} onClick={handleOpenedChange} />
+            <AmsrButton title={'닫기'} variant="secondary" onClick={handleOpenedChange} />
           </div>
         </div>
       </div>

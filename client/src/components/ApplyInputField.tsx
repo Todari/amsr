@@ -1,5 +1,9 @@
 import STRING from "../constants/String";
 import { useState } from "react";
+import { Input } from "@/components/ui/input"
+import { Label } from "@radix-ui/react-label";
+import { TypographyLarge } from "./typography/typography";
+
 
 type ApplyInputFieldProps = {
   title: string;
@@ -15,12 +19,18 @@ const ApplyInputField = ({ title, name, placeholder, value, isError, handleChang
   if (isError) {
     return (
       <div>
-        <div className='py-2'>
+        {/* <div className='py-2'>
           <div className='text-sm font-medium text-rose-500 font-BMDOHYUN'>
             {title}
           </div>
+        </div> */}
+
+        <div className="grid w-full max-w-sm items-center gap-3">
+          <TypographyLarge text={title} />
+          <Input type={name} id="name" placeholder={placeholder} value={value} onChange={handleChange} />
         </div>
-        <input
+
+        {/* <input
           className="border-2 border-rose-500 h-12 rounded-lg p-4 w-full text-sm font-medium"
           type="text"
           name={name}
@@ -31,7 +41,7 @@ const ApplyInputField = ({ title, name, placeholder, value, isError, handleChang
         />
         <div className="pt-1 text-rose-500 text-sm">
           {STRING.applyInputErrorPrefix}{title}{STRING.applyInputErrorSuffix}
-        </div>
+        </div> */}
       </div>
     )
   }
@@ -39,12 +49,21 @@ const ApplyInputField = ({ title, name, placeholder, value, isError, handleChang
     isDisabled = true;
   }
   return (<div>
-    <div className='py-2'>
+
+    {/* <div className='py-2'>
       <div className='text-sm font-medium text-stone-600 font-BMDOHYUN'>
         {title}
       </div>
+    </div> */}
+
+
+    <div className="grid w-full max-w-sm items-center gap-3">
+      <TypographyLarge text={title} />
+      <Input type={name} id="name" placeholder={placeholder} value={value} onChange={handleChange} />
     </div>
-    <input
+
+
+    {/* <input
       className="border-2 h-12 rounded-lg p-4 w-full text-sm font-medium"
       type="text"
       disabled={isDisabled}
@@ -53,7 +72,7 @@ const ApplyInputField = ({ title, name, placeholder, value, isError, handleChang
       placeholder={placeholder}
       value={value}
       onChange={handleChange}
-    />
+     /> */}
   </div>
   )
 }

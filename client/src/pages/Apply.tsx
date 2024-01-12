@@ -7,10 +7,11 @@ import ApplyBooleanPicker from "../components/ApplyBooleanPicker";
 import STRING from "../constants/String";
 import ApplyCheckboxButton from "../components/ApplyCheckboxButton";
 import ApplyFourItemPicker from "../components/ApplyFourItemPicker";
+import { CheckedState } from "@radix-ui/react-checkbox";
 
 type Info = {
   round: string;
-  privacy: boolean,
+  privacy: CheckedState | void,
   name: string;
   gender: boolean;
   phone: string;
@@ -51,10 +52,10 @@ const Apply = () => {
 
   // const [isValidate, setIsValidated] = useState(false)
 
-  const handlePrivacyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlePrivacyChange = (checked: void | CheckedState) => {
     setInfo({
       ...info,
-      privacy: e.target.checked,
+      privacy: checked,
     })
   }
 
@@ -142,10 +143,10 @@ const Apply = () => {
           <ApplyMbtiPicker onChange={handleMbtiChange} />
           <ApplyInputField title={APPLYINPUT.invited.title} name={APPLYINPUT.invited.type} placeholder={APPLYINPUT.invited.placeholder} value={info.invited} isError={isError.invited} handleChange={handleChange} />
           <ApplyBooleanPicker title={STRING.applyChangeSeatTitle} first={STRING.applyChangeSeatFirst} second={STRING.applyChangeSeatSecond} onChange={handleChangeSeatChange} />
-          <ApplyFourItemPicker title={STRING.applyBottlesTitle} items={[STRING.applyBottlesFirst, STRING.applyBottlesSecond, STRING.applyBottlesThird, STRING.applyBottlesFourth]} onChange={handleBottlesChange}/>
+          <ApplyFourItemPicker title={STRING.applyBottlesTitle} items={[STRING.applyBottlesFirst, STRING.applyBottlesSecond, STRING.applyBottlesThird, STRING.applyBottlesFourth]} onChange={handleBottlesChange} />
         </div>
         <div onClick={onClickSubmit}>
-          <AmsrButton title={STRING.headerApplyButton} disabled={true} onClick={onClickSubmit}/>
+          <AmsrButton title={STRING.headerApplyButton} onClick={onClickSubmit} />
         </div>
       </div>
     </div >

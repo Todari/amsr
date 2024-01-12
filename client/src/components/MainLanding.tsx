@@ -75,7 +75,7 @@ const MainLanding = () => {
               <motion.div className='p-4'
                 animate={{ y: [0.1 * screenSize.width, 0], opacity: [0, 1] }}
                 transition={{ type: easeInOut, duration: 1.5, delay: 1.5 }}>
-                <AmsrButton title={STRING.mainLandingApplyButton} disabled={false} onClick={goApply} />
+                <AmsrButton title={STRING.mainLandingApplyButton} onClick={goApply} />
               </motion.div>
             </div>
           </motion.div>
