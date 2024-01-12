@@ -27,7 +27,8 @@ const ApplyInputField = ({ title, name, placeholder, value, isError, handleChang
 
         <div className="grid w-full max-w-sm items-center gap-3">
           <TypographyLarge text={title} />
-          <Input type="text" id={title} disabled={isDisabled} name={title} placeholder={placeholder} value={value} onChange={handleChange} />
+          <Input type="text" id={title} disabled={isDisabled} name={name} placeholder={placeholder} value={value} onChange={handleChange} />
+
         </div>
 
         {/* <input
@@ -59,7 +60,8 @@ const ApplyInputField = ({ title, name, placeholder, value, isError, handleChang
 
     <div className="grid w-full max-w-sm items-center gap-3">
       <TypographyLarge text={title} />
-      <Input type="text" id={title} disabled={isDisabled} name={title} placeholder={placeholder} value={value} onChange={handleChange} />
+      <Input type="text" id={title} disabled={isDisabled} name={name} placeholder={placeholder} value={value} onChange={handleChange} />
+
     </div>
 
 

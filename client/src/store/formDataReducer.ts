@@ -33,6 +33,9 @@ export const formDataSlice = createSlice({
   name: 'formData',
   initialState,
   reducers: {
+    // setFormData: (state, action: PayloadAction<FormData>) => {
+      
+    // },
     setPrivacy: (state, action: PayloadAction<boolean>) => {
       state.privacy = action.payload
     },

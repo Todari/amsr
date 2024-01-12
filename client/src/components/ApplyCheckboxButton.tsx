@@ -20,7 +20,7 @@ type ApplyCheckboxButtonProps = {
 }
 
 const FormSchema = z.object({
-  mobile: z.boolean().default(false).optional(),
+  checked: z.boolean().default(false).optional(),
 })
 
 const ApplyCheckboxButton = ({ onChange }: ApplyCheckboxButtonProps) => {
@@ -29,7 +29,15 @@ const ApplyCheckboxButton = ({ onChange }: ApplyCheckboxButtonProps) => {
 
   const onClick = () => {
     setIsChecked(!isChecked);
+    onChange(isChecked)
   }
+
+  const form = useForm<z.infer<typeof FormSchema>>({
+    resolver: zodResolver(FormSchema),
+    defaultValues: {
+      checked: false,
+    },
+  })
 
   useEffect(() => {
     console.log(isChecked);
@@ -46,41 +54,41 @@ const ApplyCheckboxButton = ({ onChange }: ApplyCheckboxButtonProps) => {
     document.body.style.overflow = 'unset';
   }
 
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-    defaultValues: {
-      mobile: true,
-    },
-  })
-
-
   return (
-    <Form {...form}>
-      <form className="space-y-6 w-full max-w-sm items-center gap-3">
-        <FormField
-          control={form.control}
-          name="mobile"
-          render={({ field }) => (
-            <FormItem className="flex flex-row w-full items-start space-x-3 space-y-0 rounded-md border p-4 shadow">
-              <FormControl>
-                <Checkbox
-                  checked={field.value}
-                  onCheckedChange={field.onChange}
-                />
-              </FormControl>
-              <div className="space-y-1 leading-none">
-                <FormLabel>
-                  {STRING.applyPrivacyTitle}
-                </FormLabel>
-                <FormDescription onClick={changeModalOpened}>
-                  {STRING.applyPrivacyInfo}
-                </FormDescription>
-              </div>
-            </FormItem>
-          )}
-        />
-      </form>
-    </Form>
+    <div>
+      <Form {...form}>
+        <form className="space-y-6 w-full max-w-sm items-center gap-3">
+          <FormField
+            control={form.control}
+            name="checked"
+            render={({ field }) => (
+              <FormItem className="flex flex-row w-full items-start space-x-3 space-y-0 rounded-md border p-4 shadow">
+                <FormControl>
+                  <Checkbox
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                    onClick={onClick}
+                  />
+                </FormControl>
+                <div className="space-y-1 leading-none">
+                  <FormLabel>
+                    {STRING.applyPrivacyTitle}
+                  </FormLabel>
+                  <FormDescription onClick={changeModalOpened}>
+                    {STRING.applyPrivacyInfo}
+                  </FormDescription>
+                </div>
+              </FormItem>
+            )}
+          />
+        </form>
+      </Form>
+      {
+        modalOpened ?
+          <PrivacyModal handleOpenedChange={changeModalOpened} />
+          : null
+      }
+    </div>
   )
 
   // return (<div>
