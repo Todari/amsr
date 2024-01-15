@@ -26,9 +26,11 @@ const ApplyInputField = ({ title, name, placeholder, value, isError, handleChang
         </div> */}
 
         <div className="grid w-full max-w-sm items-center gap-3">
-          <TypographyLarge text={title} />
-          <Input type="text" id={title} disabled={isDisabled} name={name} placeholder={placeholder} value={value} onChange={handleChange} />
-
+          <TypographyLarge text={title} className="text-rose-500"/>
+          <Input className="" type="text" id={title} disabled={isDisabled} name={name} placeholder={placeholder} value={value} onChange={handleChange} />
+          <div className="pt-1 text-rose-500 text-sm">
+            {STRING.applyInputErrorPrefix}{title}{STRING.applyInputErrorSuffix}
+          </div>
         </div>
 
         {/* <input

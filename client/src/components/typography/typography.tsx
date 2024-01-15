@@ -1,5 +1,8 @@
+import { twMerge } from "tailwind-merge";
+
 type TypographyProp = {
-  text: string
+  text: string,
+  className?: string,
 }
 
 export function TypographyH1({ text }: TypographyProp) {
@@ -56,8 +59,8 @@ export function TypographyLead({ text }: TypographyProp) {
   )
 }
 
-export function TypographyLarge({ text }: TypographyProp) {
-  return <div className="text-lg font-semibold">{text}</div>
+export function TypographyLarge({ text, className }: TypographyProp) {
+  return <div className={twMerge("font-semibold", className)} >{text}</div>
 }
 
 export function TypographySmall({ text }: TypographyProp) {
