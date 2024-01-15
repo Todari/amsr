@@ -47,7 +47,7 @@ const MainLanding = () => {
             }}>
             <div className="p-12 rounded-3xl bg-white/50 backdrop-blur drop-shadow-md shadow-clay">
               <div className='p-4'>
-                <motion.div className='text-center text-3xl font-BMDOHYUN font-bold text-black'
+                <motion.div className='text-center text-3xl font-bold text-black'
                   animate={{ x: [-0.1 * screenSize.width, 0], opacity: [0, 1] }}
                   transition={{ type: easeInOut, duration: 1.5 }}
                   style={{
@@ -55,7 +55,7 @@ const MainLanding = () => {
                   }}>
                   {STRING.mainLandingTitlePrefix}
                 </motion.div>
-                <motion.div className='text-center text-3xl font-BMDOHYUN font-bold text-black'
+                <motion.div className='text-center text-3xl font-bold text-black'
                   animate={{ x: [0.1 * screenSize.width, 0], opacity: [0, 1] }}
                   transition={{ type: easeInOut, duration: 1.5, delay: 0.1 }}
                   style={{
@@ -65,14 +65,14 @@ const MainLanding = () => {
                 </motion.div>
               </div>
               <div className='p-2'>
-                <motion.div className='text-center text-l font-BMDOHYUN font-medium text-stone-500'
+                <motion.div className='text-center text-l font-medium text-stone-500'
                   animate={{ y: [0.1 * screenSize.width, 0], opacity: [0, 1] }}
                   transition={{ type: easeInOut, duration: 1.5, delay: 0.2 }}
                 >
                   {STRING.mainLandingSubTitle}
                 </motion.div>
               </div>
-              <motion.div className='p-4'
+              <motion.div className='p-4 flex justify-center'
                 animate={{ y: [0.1 * screenSize.width, 0], opacity: [0, 1] }}
                 transition={{ type: easeInOut, duration: 1.5, delay: 1.5 }}>
                 <AmsrButton title={STRING.mainLandingApplyButton} onClick={goApply} />

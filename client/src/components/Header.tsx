@@ -31,12 +31,12 @@ const Header = ({ visible }: HeaderProp) => {
           scale: 0.95,
           transition: { duration: 0.1 }
         }}>
-        <div className="text-left text-2xl font-BMDOHYUN text-stone-800 truncat">
+        <div className="text-left text-2xl text-stone-800 truncat">
           {STRING.headerLogo}
         </div>
       </motion.div>
     </div>
-    <div className='basis-1/4 h-full py-3.5'>
+    <div className='basis-1/4 h-full py-3.5 flex justify-center'>
       <AmsrButton title={STRING.headerApplyButton} variant="secondary" onClick={goApply} />
     </div>
   </motion.div >)
