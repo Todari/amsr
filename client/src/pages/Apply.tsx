@@ -141,9 +141,9 @@ const Apply = () => {
   }
 
   return (
-    <div className="pt-24 p-8 space-y-4">
-      <div className='flex flex-col gap-16 items-center'>
-        <div className='w-full flex flex-col gap-6'>
+    <div className="pt-24 p-8 space-y-4 w-full">
+      <div className='flex flex-col gap-16 items-center justify-center'>
+        <div className='flex flex-col gap-6'>
           <ApplyCheckboxButton onChange={handlePrivacyChange} title={STRING.applyPrivacyTitle} text={STRING.applyPrivacyText} subtext={STRING.applyPrivacySubText} />
           <ApplyInputField title={APPLYINPUT.round.title} name={APPLYINPUT.round.type} placeholder={""} value={info.round} isError={false} handleChange={() => { }} />
           <ApplyInputField title={APPLYINPUT.name.title} name={APPLYINPUT.name.type} placeholder={APPLYINPUT.name.placeholder} value={info.name} isError={isError.name} handleChange={handleChange} />

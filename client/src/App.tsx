@@ -3,6 +3,7 @@ import Header from './components/Header';
 import { Route, Routes } from 'react-router-dom';
 import Main from './pages/Main';
 import Apply from './pages/Apply';
+import { Toaster } from './components/ui/toaster';
 
 type scrollPosition = {
   prev: number,
@@ -37,6 +38,7 @@ function App() {
         <Route path='/' Component={Main} />
         <Route path='/apply' Component={Apply} />
       </Routes>
+      <Toaster/>
 
     </div >
 
