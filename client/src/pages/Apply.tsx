@@ -124,7 +124,7 @@ const Apply = () => {
   //   }
   // }
 
-  const onClickSubmit = (info: Info) => {
+  const onClickSubmit = () => {
     console.log("!!")
     apply(info)
   }
@@ -145,8 +145,8 @@ const Apply = () => {
           <ApplyFourItemPicker title={STRING.applyBottlesTitle} items={[STRING.applyBottlesFirst, STRING.applyBottlesSecond, STRING.applyBottlesThird, STRING.applyBottlesFourth]} onChange={handleBottlesChange} />
           <ApplyTransfer onChange={handleTransferChange} title={STRING.applyTransferTitle} text={STRING.applyTransferText} subtext={STRING.applyTransferSubText} />
         </div>
-        <div onClick={()=>onClickSubmit} >
-          <AmsrButton title={STRING.headerApplyButton} />
+        <div>
+          <AmsrButton title={STRING.headerApplyButton}  onClick={onClickSubmit} />
         </div>
       </div>
     </div >
