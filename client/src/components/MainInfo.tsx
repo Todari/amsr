@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import { motion, useTransform, useScroll } from "framer-motion";
+import { motion, useTransform, useScroll, easeInOut } from "framer-motion";
 import STRING from "../constants/String";
 
 const MainInfo = () => {
@@ -23,23 +23,50 @@ const MainInfo = () => {
   }
 
   const landingContainerRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: landingContainerRef });
-  const scaleTransform = useTransform(scrollYProgress, [0, 1], [0.75, 1.2])
-  const offsetTransform = useTransform(scrollYProgress, [0.75, 1], [0, - screenSize.height])
+  // const { scrollYProgress } = useScroll({ target: landingContainerRef });
+  // const scaleTransform = useTransform(scrollYProgress, [0, 1], [0.75, 1.2])
+  // const offsetTransform = useTransform(scrollYProgress, [0.75, 1], [0, - screenSize.height])
 
   return (
-    <div ref={landingContainerRef} className="h-[400vh] top-[300vh] flex flex-col items-center bg-slate-300">
-      <motion.div className='fixed w-full h-screen max-h-[1440px] flex flex-col items-center justify-center border-2'
-        style={{
-          y: offsetTransform
-        }}>
-        <motion.div className='border-2'
+    <div className="snap-center flex w-full max-w-3xl h-[100dvh] items-center justify-center bg-main-landing bg-cover">
+      <div ref={landingContainerRef}>
+        <motion.div className='flex flex-col items-center'
           style={{
-            scale: scaleTransform,
+            // opacity: landingOpacity
           }}>
+          <div className="p-12 rounded-3xl bg-white/50 backdrop-blur drop-shadow-md shadow-clay">
+            <div className='p-4'>
+              <motion.div className='text-center text-3xl font-bold text-black'
+                animate={{ x: [-0.1 * screenSize.width, 0], opacity: [0, 1] }}
+                transition={{ type: easeInOut, duration: 1.5 }}
+              >
+                {STRING.mainLandingTitlePrefix}
+              </motion.div>
+              <motion.div className='text-center text-3xl font-bold text-black'
+                animate={{ x: [0.1 * screenSize.width, 0], opacity: [0, 1] }}
+                transition={{ type: easeInOut, duration: 1.5, delay: 0.1 }}
+              >
+                {STRING.mainLandingTitleSuffix}
+              </motion.div>
+            </div>
+            <div className='p-2'>
+              <motion.div className='text-center text-l font-medium text-stone-500'
+                animate={{ y: [0.1 * screenSize.width, 0], opacity: [0, 1] }}
+                transition={{ type: easeInOut, duration: 1.5, delay: 0.2 }}
+              >
+                {STRING.mainLandingSubTitle}
+              </motion.div>
+            </div>
+            <motion.div className='p-4 flex justify-center'
+              animate={{ y: [0.1 * screenSize.width, 0], opacity: [0, 1] }}
+              transition={{ type: easeInOut, duration: 1.5, delay: 1.5 }}>
+              
+            </motion.div>
+          </div>
         </motion.div>
-      </motion.div>
+      </div>
     </div>
+    
   )
 }
 

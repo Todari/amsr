@@ -4,7 +4,7 @@ import MainLanding from "../components/MainLanding"
 
 const Main = () => {
   return (
-    <div className= ''>
+    <div className= 'snap-mandatory snap-y overflow-scroll'>
       <MainLanding />     
       <MainInfo />
     </div>)

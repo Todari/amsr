@@ -8,6 +8,7 @@ import STRING from "../constants/String";
 import ApplyCheckboxButton from "../components/ApplyCheckboxButton";
 import ApplyFourItemPicker from "../components/ApplyFourItemPicker";
 import { CheckedState } from "@radix-ui/react-checkbox";
+import ApplyTransfer from "@/components/ApplyTransfer";
 
 type Info = {
   round: string;
@@ -20,6 +21,7 @@ type Info = {
   invited: string,
   changeSeat: boolean,
   bottles: number,
+  transfer: boolean
 }
 
 type InfoError = {
@@ -41,6 +43,7 @@ const Apply = () => {
     invited: '',
     changeSeat: true,
     bottles: 0,
+    transfer: false
   });
 
   const [isError, setIsError] = useState<InfoError>({
@@ -94,6 +97,13 @@ const Apply = () => {
     })
   }
 
+  const handleTransferChange = (value: boolean) => {
+    setInfo({
+      ...info,
+      transfer: value,
+    })
+  }
+
   useEffect(() => {
     console.log(info);
     if (info.name.length > APPLYINPUT.name.maxLength) {
@@ -134,7 +144,7 @@ const Apply = () => {
     <div className="pt-24 p-8 space-y-4">
       <div className='flex flex-col gap-16 items-center'>
         <div className='w-full flex flex-col gap-6'>
-          <ApplyCheckboxButton onChange={handlePrivacyChange} />
+          <ApplyCheckboxButton onChange={handlePrivacyChange} title={STRING.applyPrivacyTitle} text={STRING.applyPrivacyText} subtext={STRING.applyPrivacySubText} />
           <ApplyInputField title={APPLYINPUT.round.title} name={APPLYINPUT.round.type} placeholder={""} value={info.round} isError={false} handleChange={() => { }} />
           <ApplyInputField title={APPLYINPUT.name.title} name={APPLYINPUT.name.type} placeholder={APPLYINPUT.name.placeholder} value={info.name} isError={isError.name} handleChange={handleChange} />
           <ApplyBooleanPicker title={STRING.applyGenderTitle} first={STRING.applyGenderFirst} second={STRING.applyGenderSecond} onChange={handleGenderChange} />
@@ -144,6 +154,7 @@ const Apply = () => {
           <ApplyInputField title={APPLYINPUT.invited.title} name={APPLYINPUT.invited.type} placeholder={APPLYINPUT.invited.placeholder} value={info.invited} isError={isError.invited} handleChange={handleChange} />
           <ApplyBooleanPicker title={STRING.applyChangeSeatTitle} first={STRING.applyChangeSeatFirst} second={STRING.applyChangeSeatSecond} onChange={handleChangeSeatChange} />
           <ApplyFourItemPicker title={STRING.applyBottlesTitle} items={[STRING.applyBottlesFirst, STRING.applyBottlesSecond, STRING.applyBottlesThird, STRING.applyBottlesFourth]} onChange={handleBottlesChange} />
+          <ApplyTransfer onChange={handleTransferChange} title={STRING.applyTransferTitle} text={STRING.applyTransferText} subtext={STRING.applyTransferSubText} />
         </div>
         <div onClick={onClickSubmit}>
           <AmsrButton title={STRING.headerApplyButton} onClick={onClickSubmit} />

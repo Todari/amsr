@@ -14,34 +14,27 @@ import {
   FormLabel,
 } from "@/components/ui/form"
 import { CheckedState } from "@radix-ui/react-checkbox";
+import { TypographyLarge, TypographySmall, TypographyMuted } from "./typography/typography";
 
 type ApplyCheckboxButtonProps = {
-  onChange: (checked: CheckedState) => void
+  onChange: (checked: CheckedState) => void,
+  title: string,
+  text: string,
+  subtext: string,
 }
 
 const FormSchema = z.object({
   checked: z.boolean().default(false).optional(),
 })
 
-const ApplyCheckboxButton = ({ onChange }: ApplyCheckboxButtonProps) => {
+const ApplyCheckboxButton = ({ onChange, title, text, subtext }: ApplyCheckboxButtonProps) => {
   const [isChecked, setIsChecked] = useState(false);
   const [modalOpened, setModalOpened] = useState(false);
 
-  const onClick = () => {
+  const handleChecked = () => {
     setIsChecked(!isChecked);
     onChange(isChecked)
   }
-
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-    defaultValues: {
-      checked: false,
-    },
-  })
-
-  useEffect(() => {
-    console.log(isChecked);
-  }, [isChecked])
 
   const changeModalOpened = () => {
     setModalOpened(!modalOpened);
@@ -55,34 +48,20 @@ const ApplyCheckboxButton = ({ onChange }: ApplyCheckboxButtonProps) => {
   }
 
   return (
-    <div>
-      <Form {...form}>
-        <form className="space-y-6 w-full max-w-sm items-center gap-3">
-          <FormField
-            control={form.control}
-            name="checked"
-            render={({ field }) => (
-              <FormItem className="flex flex-row w-full items-start space-x-3 space-y-0 rounded-md border p-4 shadow">
-                <FormControl>
+    <div className="grid w-full max-w-sm items-center gap-3">
+      <TypographyLarge text={title}/>
+        <div className="space-y-6 w-full max-w-sm items-center gap-3">
+              <div className="flex flex-row w-full items-start space-x-3 space-y-0 rounded-md border p-4 shadow">
                   <Checkbox
-                    checked={field.value}
-                    onCheckedChange={field.onChange}
-                    onClick={onClick}
+                    checked={isChecked}
+                    onCheckedChange={handleChecked}
                   />
-                </FormControl>
                 <div className="space-y-1 leading-none">
-                  <FormLabel>
-                    {STRING.applyPrivacyTitle}
-                  </FormLabel>
-                  <FormDescription onClick={changeModalOpened}>
-                    {STRING.applyPrivacyInfo}
-                  </FormDescription>
+                  <TypographySmall text={text}/>
+                  <TypographyMuted text={subtext} onClick={changeModalOpened}/>
                 </div>
-              </FormItem>
-            )}
-          />
-        </form>
-      </Form>
+              </div>
+        </div>
       {
         modalOpened ?
           <PrivacyModal handleOpenedChange={changeModalOpened} />

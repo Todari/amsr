@@ -3,8 +3,15 @@ enum STRING {
   headerHistoryButton = 'History',
   headerApplyButton = '신청하기',
   
-  applyPrivacyTitle = '(필수) 개인정보 제공에 동의해요 :)',
-  applyPrivacyInfo = '개인정보 제공내역을 확인하려면 여기를 클릭해 주세요!',
+  applyPrivacyTitle = '개인정보 제공 동의',
+  applyPrivacyText = '(필수) 개인정보 제공에 동의해요 :)',
+  applyPrivacySubText = '개인정보 제공내역을 확인하려면 여기를 클릭하세요!',
+  applyTransferTitle = '참가비 송금',
+  applyTransferCopy = '카카오뱅크 3333-01-3428220 40,000원',
+  applyTransferText = '40,000원',
+  applyTransferText2 = '카카오뱅크 3333-01-3428220 이태훈',
+  applyTransferSubText = '계좌번호를 복사하려면 여기를 클릭하세요!',
+  applyTransferSubText2 = '송금 완료 후 신청이 확인돼요',
   
   applyInputErrorPrefix = '유효하지 않은 ',
   applyInputErrorSuffix = '입니다.',
