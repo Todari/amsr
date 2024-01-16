@@ -5,7 +5,7 @@ import { Button, ButtonProps } from "@/components/ui/button";
 type buttonState = {
   title: string
   variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | null,
-  onClick: () => void
+  onClick?: () => void
 }
 
 const AmsrButton = ({ title, variant, onClick }: buttonState) => {

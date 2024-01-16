@@ -9,20 +9,8 @@ import ApplyCheckboxButton from "../components/ApplyCheckboxButton";
 import ApplyFourItemPicker from "../components/ApplyFourItemPicker";
 import { CheckedState } from "@radix-ui/react-checkbox";
 import ApplyTransfer from "@/components/ApplyTransfer";
-
-type Info = {
-  round: string;
-  privacy: CheckedState | void,
-  name: string;
-  gender: boolean;
-  phone: string;
-  age: string;
-  mbti: string;
-  invited: string,
-  changeSeat: boolean,
-  bottles: number,
-  transfer: boolean
-}
+import Info from "../model/info";
+import { apply } from "@/http/apply";
 
 type InfoError = {
   name: boolean;
@@ -136,8 +124,9 @@ const Apply = () => {
   //   }
   // }
 
-  const onClickSubmit = () => {
-
+  const onClickSubmit = (info: Info) => {
+    console.log("!!")
+    apply(info)
   }
 
   return (
@@ -156,8 +145,8 @@ const Apply = () => {
           <ApplyFourItemPicker title={STRING.applyBottlesTitle} items={[STRING.applyBottlesFirst, STRING.applyBottlesSecond, STRING.applyBottlesThird, STRING.applyBottlesFourth]} onChange={handleBottlesChange} />
           <ApplyTransfer onChange={handleTransferChange} title={STRING.applyTransferTitle} text={STRING.applyTransferText} subtext={STRING.applyTransferSubText} />
         </div>
-        <div onClick={onClickSubmit}>
-          <AmsrButton title={STRING.headerApplyButton} onClick={onClickSubmit} />
+        <div onClick={()=>onClickSubmit} >
+          <AmsrButton title={STRING.headerApplyButton} />
         </div>
       </div>
     </div >
