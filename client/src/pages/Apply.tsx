@@ -11,6 +11,10 @@ import { CheckedState } from "@radix-ui/react-checkbox";
 import ApplyTransfer from "@/components/ApplyTransfer";
 import Info from "../model/info";
 import { apply } from "@/http/apply";
+import scrollPosition from "@/model/scrollPosition";
+import { useDispatch } from "react-redux";
+import { setShowHeader } from "@/store/headerStateReducer";
+import { useAppSelector } from "@/hooks";
 
 type InfoError = {
   name: boolean;
@@ -20,6 +24,26 @@ type InfoError = {
 }
 
 const Apply = () => {
+  const { showHeader } = useAppSelector((state) => state.headerState)
+  const [scrollPosition, setScrollPosition] = useState<scrollPosition>({ prev: window.scrollY, current: window.scrollY })
+  const dispatch = useDispatch();
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    console.log(scrollPosition.prev, scrollPosition.current)
+    console.log(showHeader)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [window.scrollY])
+
+  const handleScroll = () => {
+    setScrollPosition({ prev: scrollPosition.current, current: window.scrollY });
+    dispatch(setShowHeader(scrollPosition.prev >= scrollPosition.current))
+    if (window.scrollY < 50) {
+      dispatch(setShowHeader(true))
+    }
+  }
+
   const [info, setInfo] = useState<Info>({
     round: `${STRING.mainLandingTitlePrefix} ${STRING.mainLandingTitleSuffix}`,
     privacy: false,
@@ -146,7 +170,7 @@ const Apply = () => {
           <ApplyTransfer onChange={handleTransferChange} title={STRING.applyTransferTitle} text={STRING.applyTransferText} subtext={STRING.applyTransferSubText} />
         </div>
         <div>
-          <AmsrButton title={STRING.headerApplyButton}  onClick={onClickSubmit} />
+          <AmsrButton title={STRING.headerApplyButton} onClick={onClickSubmit} />
         </div>
       </div>
     </div >
