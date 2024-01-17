@@ -16,6 +16,9 @@ module.exports = {
         "2xl": "1400px",
       },
     },
+    fontFamily: {
+      ClimateCrisisKRVF: ["ClimateCrisisKRVF"]
+    },
     extend: {
       colors: {
         border: "hsl(var(--border))",

@@ -23,7 +23,7 @@ const Header = ({ visible }: HeaderProp) => {
     }
   }, [visible])
 
-  return (<motion.div className='fixed top-0 px-8 w-full flex flex-row gap-4 h-16 items-center justify-center bg-white drop-shadow-lg z-10'
+  return (<motion.div className='fixed top-0 px-8 w-full flex flex-row gap-4 h-16 items-center justify-center bg-white drop-shadow-lg z-50'
     animate={{ y }}
     transition={{ duration: 0.3 }}>
     <div className='grow flex items-center justify-start max-w-3xl'>
