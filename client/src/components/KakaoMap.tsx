@@ -1,13 +1,24 @@
 import { Map, MapMarker, ZoomControl } from "react-kakao-maps-sdk";
+import { toast } from "./ui/use-toast";
+import STRING from "@/constants/String";
 
 
 const KakaoMap = () => {
-  // const apiKey = process.env.KAKAO_API_KEY;
 
-  // const [loading, error] = useKakaoLoader({
-  //   appkey: apiKey // 발급 받은 APPKEY
-
-  // })
+  const handleCopyLocation = async () => {
+    try {
+      await navigator.clipboard.writeText(STRING.mainLandingLocationCopy);
+      toast({
+        title: STRING.locationCopyComplete,
+        description: STRING.locationCopyCompleteDescription,
+      })
+    } catch (error) {
+      toast({
+        title: STRING.locationCopyFail,
+        description: STRING.locationCopyFailDescription,
+      })
+    }
+  };
 
   return (
     <Map id="map"
@@ -29,6 +40,8 @@ const KakaoMap = () => {
           lat: 37.55808645471607,
           lng: 126.93474760233823,
         }}
+        clickable={true} // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
+        onClick={handleCopyLocation}
       />
       <ZoomControl position={"RIGHT"}/>
       </Map>
@@ -36,3 +49,4 @@ const KakaoMap = () => {
 }
 
 export default KakaoMap
+

@@ -26,15 +26,15 @@ const ApplyTransfer = ({ onChange, title, text, subtext }: ApplyTransferType) =>
 
   const handleCopyClipBoard = async () => {
     try {
-      await navigator.clipboard.writeText(STRING.applyTransferText);
+      await navigator.clipboard.writeText(STRING.applyTransferCopy);
       toast({
-        title: "복사가 완료되었어요!",
-        description: "붙여넣기를 통해 계좌번호를 입력할 수 있어요",
+        title: STRING.transferCopyComplete,
+        description: STRING.transferCopyCompleteDescription,
       })
     } catch (error) {
       toast({
-        title: "복사가 실패했어요 :(",
-        description: "알 수 없는 이유로 복사가 되지 않았어요",
+        title: STRING.transferCopyFail,
+        description: STRING.transferCopyFailDescription,
       })
     }
   };

@@ -1,8 +1,11 @@
-import { useRef, useEffect, useState } from "react";
-import { motion, useTransform, useScroll, easeInOut } from "framer-motion";
-import STRING from "../constants/String";
+import AmsrButton from "./AmsrButton"
+import STRING from "../constants/String"
+import { useNavigate } from "react-router-dom";
+import { easeIn, easeInOut, motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import KakaoMap from "./KakaoMap";
 
-const MainInfo = () => {
+const MainLanding = () => {
   const [screenSize, setScreenSize] = useState({
     width: window.screen.width,
     height: window.screen.height
@@ -21,11 +24,16 @@ const MainInfo = () => {
       height: window.screen.height
     })
   }
+  const navigate = useNavigate();
+  const goApply = () => { navigate('/apply') };
 
   const landingContainerRef = useRef(null);
-  // const { scrollYProgress } = useScroll({ target: landingContainerRef });
-  // const scaleTransform = useTransform(scrollYProgress, [0, 1], [0.75, 1.2])
-  // const offsetTransform = useTransform(scrollYProgress, [0.75, 1], [0, - screenSize.height])
+  const { scrollYProgress } = useScroll({ target: landingContainerRef });
+  // const firstTitleX = useTransform(scrollYProgress, [0, 0.25], [-screenSize.width, 0], { ease: easeInOut })
+  // const secondTitleX = useTransform(scrollYProgress, [0.15, 0.4], [-screenSize.width, 0], { ease: easeInOut })
+  // const landingOpacity = useTransform(scrollYProgress, [0, 0.75], [0, 1])
+  // const landingY = useTransform(scrollYProgress, [0.75, 1], [0, - screenSize.height])
+
 
   return (
     <div className="snap-center flex w-full max-w-5xl h-[100dvh] items-center justify-center bg-main-landing bg-cover">
@@ -49,25 +57,31 @@ const MainInfo = () => {
                 {STRING.mainLandingTitleSuffix}
               </motion.div>
             </div>
-            <div className='p-2'>
+            <div className='p-2 flex flex-col'>
               <motion.div className='text-center text-l font-medium text-stone-500'
                 animate={{ y: [0.1 * screenSize.width, 0], opacity: [0, 1] }}
                 transition={{ type: easeInOut, duration: 1.5, delay: 0.2 }}
               >
                 {STRING.mainLandingSubTitle}
               </motion.div>
+              <motion.div className='text-center text-l font-medium text-stone-500'
+                animate={{ y: [0.1 * screenSize.width, 0], opacity: [0, 1] }}
+                transition={{ type: easeInOut, duration: 1.5, delay: 0.2 }}
+              >
+                {STRING.mainLandingSubTitle2}
+              </motion.div>
             </div>
+            <KakaoMap />
             <motion.div className='p-4 flex justify-center'
               animate={{ y: [0.1 * screenSize.width, 0], opacity: [0, 1] }}
               transition={{ type: easeInOut, duration: 1.5, delay: 1.5 }}>
-              
+              <AmsrButton title={STRING.mainLandingApplyButton} onClick={goApply} />
             </motion.div>
           </div>
         </motion.div>
       </div>
     </div>
-    
   )
 }
 
-export default MainInfo
+export default MainLanding

@@ -1,8 +1,17 @@
 enum STRING {
+  transferCopyComplete = "복사가 완료되었어요!",
+  transferCopyCompleteDescription = "붙여넣기를 통해 계좌번호를 입력할 수 있어요",
+  transferCopyFail = "복사가 실패했어요 :(",
+  transferCopyFailDescription = "알 수 없는 이유로 복사가 되지 않았어요",
+  locationCopyComplete = "복사가 완료되었어요!",
+  locationCopyCompleteDescription = "붙여넣기를 통해 주소를 검색할 수 있어요",
+  locationCopyFail = "복사가 실패했어요 :(",
+  locationCopyFailDescription = "알 수 없는 이유로 복사가 되지 않았어요",
+
   headerLogo = 'AMSR대잔치',
   headerHistoryButton = 'History',
   headerApplyButton = '신청하기',
-  
+
   applyPrivacyTitle = '개인정보 제공 동의',
   applyPrivacyText = '(필수) 개인정보 제공에 동의해요 :)',
   applyPrivacySubText = '개인정보 제공내역을 확인하려면 여기를 클릭하세요!',
@@ -12,7 +21,7 @@ enum STRING {
   applyTransferText2 = '카카오뱅크 3333-01-3428220 이태훈',
   applyTransferSubText = '계좌번호를 복사하려면 여기를 클릭하세요!',
   applyTransferSubText2 = '송금 완료 후 신청이 확인돼요',
-  
+
   applyInputErrorPrefix = '유효하지 않은 ',
   applyInputErrorSuffix = '입니다.',
   applyGenderTitle = '성별',
@@ -50,9 +59,10 @@ enum STRING {
 
   mainLandingTitlePrefix = '2024 신년맞이',
   mainLandingTitleSuffix = '아무사람대잔치',
-  mainLandingSubTitle = '2024년 2월 3일 토요일',
+  mainLandingSubTitle = '2024년 2월 3일 토요일 19:00',
   mainLandingSubTitle2 = '창천동 53-19 지하 1층 53에비뉴',
   mainLandingApplyButton = '참가 신청하기',
+  mainLandingLocationCopy = '창천동 53-19'
 }
 
 export default STRING;
