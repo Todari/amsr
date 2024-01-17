@@ -5,7 +5,7 @@ const setCookie = () => {
   
   var date = new Date();
   date.setTime(date.getTime() + 60 * 60 * 24 * 1000);
-  document.cookie = `auth=1; expires=' + ${date.toUTCString()}; path=/`;
+  document.cookie = `auth=1; expires=' + ${date.toUTCString()}; path=/;`;
 }
 
 

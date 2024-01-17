@@ -16,7 +16,7 @@ const ApplyFourItemPicker = ({ title, items, onChange }: ApplyFourItemPickerProp
   }, [item])
 
   return (
-    <div className='grid w-full max-w-sm items-center gap-3' >
+    <div className='grid w-full max-w-3xl items-center gap-3' >
       <TypographyLarge text={title} />
 
       <div className='grid grid-cols-2 gap-4'>

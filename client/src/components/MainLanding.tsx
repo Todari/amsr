@@ -35,7 +35,7 @@ const MainLanding = () => {
 
 
   return (
-    <div className="snap-center flex w-full max-w-3xl h-[100dvh] items-center justify-center bg-main-landing bg-cover">
+    <div className="snap-center flex w-full max-w-5xl h-[100dvh] items-center justify-center bg-main-landing bg-cover">
       <div ref={landingContainerRef}>
         <motion.div className='flex flex-col items-center'
           style={{

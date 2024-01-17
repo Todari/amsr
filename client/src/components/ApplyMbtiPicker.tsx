@@ -51,7 +51,7 @@ const ApplyMbtiPicker = ({ onChange }: ApplyMbtiPickerProp) => {
   }, [mbti, mbtiStr]);
 
   return (
-    <div className='grid w-full max-w-sm items-center gap-3' >
+    <div className='grid w-full max-w-3xl items-center gap-3' >
       <TypographyLarge text={"MBTI"} />
 
       <div className='flex flex-row gap-4'>

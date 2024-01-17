@@ -28,7 +28,7 @@ const MainInfo = () => {
   // const offsetTransform = useTransform(scrollYProgress, [0.75, 1], [0, - screenSize.height])
 
   return (
-    <div className="snap-center flex w-full max-w-3xl h-[100dvh] items-center justify-center bg-main-landing bg-cover">
+    <div className="snap-center flex w-full max-w-5xl h-[100dvh] items-center justify-center bg-main-landing bg-cover">
       <div ref={landingContainerRef}>
         <motion.div className='flex flex-col items-center'
           style={{

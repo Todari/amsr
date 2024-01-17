@@ -40,9 +40,9 @@ const ApplyTransfer = ({ onChange, title, text, subtext }: ApplyTransferType) =>
   };
 
   return (
-    <div className="grid w-full max-w-sm items-center gap-3">
+    <div className="grid w-full max-w-3xl items-center gap-3">
       <TypographyLarge text={title} />
-      <div className="space-y-6 w-full max-w-sm items-center gap-3">
+      <div className="space-y-6 w-full max-w-3xl items-center gap-3">
         <div className="flex flex-row w-full items-start space-x-3 space-y-0 rounded-md border p-4 shadow">
           <div className=" leading-none flex flex-col gap-2">
             <TypographyP text={text}/>

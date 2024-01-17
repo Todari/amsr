@@ -16,7 +16,7 @@ const PrivacyModal = ({ handleOpenedChange }: PrivacyModalProp) => {
           <div className="grow flex font-BMDOHYUN text-stone-800 text-l text-center items-center">
             {STRING.privacyModalTitle}
           </div>
-          <div className='shrink flex flex-col gap-8 py-4 max-w-sm justify-center items-center'>
+          <div className='shrink flex flex-col gap-8 py-4 max-w-3xl justify-center items-center'>
             <div className="text-stone-800 text-base">
               {STRING.privacyModalStart}
             </div>
