@@ -11,7 +11,7 @@ const setCookie = () => {
 
 const apply = async (info: Info) => {
   // const url = 'http://localhost:8080/user'
-  const url = 'http://54.168.85.85:8080/user'
+  const url = 'https://amsr-server.site/user'
   setCookie();
   axios.post(url,
     {
