@@ -51,6 +51,7 @@ enum STRING {
   mainLandingTitlePrefix = '2024 신년맞이',
   mainLandingTitleSuffix = '아무사람대잔치',
   mainLandingSubTitle = '2024년 2월 3일 토요일',
+  mainLandingSubTitle2 = '창천동 53-19 지하 1층 53에비뉴',
   mainLandingApplyButton = '참가 신청하기',
 }
 

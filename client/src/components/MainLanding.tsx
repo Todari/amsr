@@ -3,6 +3,7 @@ import STRING from "../constants/String"
 import { useNavigate } from "react-router-dom";
 import { easeIn, easeInOut, motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import KakaoMap from "./KakaoMap";
 
 const MainLanding = () => {
   const [screenSize, setScreenSize] = useState({
@@ -56,14 +57,21 @@ const MainLanding = () => {
                 {STRING.mainLandingTitleSuffix}
               </motion.div>
             </div>
-            <div className='p-2'>
+            <div className='p-2 flex flex-col'>
               <motion.div className='text-center text-l font-medium text-stone-500'
                 animate={{ y: [0.1 * screenSize.width, 0], opacity: [0, 1] }}
                 transition={{ type: easeInOut, duration: 1.5, delay: 0.2 }}
               >
                 {STRING.mainLandingSubTitle}
               </motion.div>
+              <motion.div className='text-center text-l font-medium text-stone-500'
+                animate={{ y: [0.1 * screenSize.width, 0], opacity: [0, 1] }}
+                transition={{ type: easeInOut, duration: 1.5, delay: 0.2 }}
+              >
+                {STRING.mainLandingSubTitle2}
+              </motion.div>
             </div>
+            <KakaoMap />
             <motion.div className='p-4 flex justify-center'
               animate={{ y: [0.1 * screenSize.width, 0], opacity: [0, 1] }}
               transition={{ type: easeInOut, duration: 1.5, delay: 1.5 }}>
