@@ -1,8 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
+import headerStateReducer from './headerStateReducer'
+import screenSizeReducer from './screenSizeReducer'
+import formDataReducer from './formDataReducer'
 // ...
 
 const store = configureStore({
   reducer: {
+    headerState: headerStateReducer,
+    screenSize: screenSizeReducer,
+    FormData: formDataReducer
   }
 })
 

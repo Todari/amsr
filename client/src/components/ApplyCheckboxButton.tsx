@@ -1,18 +1,6 @@
-import STRING from "../constants/String";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import PrivacyModal from "./PrivacyModal";
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
 import { Checkbox } from "@/components/ui/checkbox"
-import {
-  Form,
-  FormField,
-  FormControl,
-  FormDescription,
-  FormItem,
-  FormLabel,
-} from "@/components/ui/form"
 import { CheckedState } from "@radix-ui/react-checkbox";
 import { TypographyLarge, TypographySmall, TypographyMuted } from "./typography/typography";
 
@@ -22,10 +10,6 @@ type ApplyCheckboxButtonProps = {
   text: string,
   subtext: string,
 }
-
-const FormSchema = z.object({
-  checked: z.boolean().default(false).optional(),
-})
 
 const ApplyCheckboxButton = ({ onChange, title, text, subtext }: ApplyCheckboxButtonProps) => {
   const [isChecked, setIsChecked] = useState(false);

@@ -77,6 +77,6 @@ export const {
   setChangeSeat,
   setBottles
 } = formDataSlice.actions;
-export const formData = (state: RootState) => state.formData
+// export const formData = (state: RootState) => state.formD
 
 export default formDataSlice.reducer
