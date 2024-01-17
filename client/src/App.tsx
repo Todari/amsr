@@ -16,14 +16,15 @@ function App() {
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
+    console.log(scrollPosition.prev,scrollPosition.current)
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [])
+  }, [window.scrollY])
 
   const handleScroll = () => {
     setScrollPosition({ prev: scrollPosition.current, current: window.scrollY });
-    setIsScrollDown(scrollPosition.prev <= scrollPosition.current)
+    setIsScrollDown(scrollPosition.prev <= scrollPosition.current);
     if (window.scrollY < 50) {
       setIsScrollDown(false)
     }
