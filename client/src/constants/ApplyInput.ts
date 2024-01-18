@@ -42,7 +42,7 @@ const APPLYINPUT: InputType = Object.freeze({
     minLength: 11,
     maxLength: 11,
     regExp: /^[0-9]+$/,
-    finalRegExp: /^(010[0-9]){11}$/
+    finalRegExp: /^(010)[0-9]{8}$/
   },
   age: {
     title: '출생연도',
@@ -51,7 +51,7 @@ const APPLYINPUT: InputType = Object.freeze({
     maxLength: 2,
     placeholder: 'ex) 96, 03, 주민번호 앞 2자리만 입력해 주세요',
     regExp: /^[0-9]+$/,
-    finalRegExp: /^([8-9][0-9])||0[0-5]$/
+    finalRegExp: /^(8|9|0)[0-9]{1}$/
   },
   invited: {
     title: '나를 초대한 친구',

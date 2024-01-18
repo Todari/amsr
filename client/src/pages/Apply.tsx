@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { FocusEventHandler, ReactComponentElement, useEffect, useState } from "react";
 import ApplyInputField from "../components/ApplyInputField";
 import APPLYINPUT from "../constants/ApplyInput";
 import ApplyMbtiPicker from "../components/ApplyMbtiPicker";
@@ -15,6 +15,9 @@ import scrollPosition from "@/model/scrollPosition";
 import { useDispatch } from "react-redux";
 import { setShowHeader } from "@/store/headerStateReducer";
 import { useAppSelector } from "@/hooks";
+import { motion } from "framer-motion"
+import { Button } from "@/components/ui/button";
+import { error } from "console";
 
 type InfoError = {
   name: boolean;
@@ -65,7 +68,7 @@ const Apply = () => {
     invited: false,
   });
 
-  // const [isValidate, setIsValidated] = useState(false)
+  const [isValidated, setIsValidated] = useState(false)
 
   const handlePrivacyChange = (checked: void | CheckedState) => {
     setInfo({
@@ -75,10 +78,39 @@ const Apply = () => {
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInfo({
-      ...info,
-      [e.target.name]: e.target.value
+    if (!APPLYINPUT[e.target.name].regExp.test(e.target.value)) {
+      setInfo({
+        ...info,
+        [e.target.name]: e.target.value.slice(0, -1)
+      })
+    } else {
+      setInfo({
+        ...info,
+        [e.target.name]: e.target.value
+      })
+    }
+    if (e.target.value.length > APPLYINPUT[e.target.name].maxLength) {
+      setInfo({ ...info, [e.target.name]: e.target.value.slice(0, APPLYINPUT[e.target.name].maxLength - e.target.value.length) })
+    }
+  }
+
+  const validateChange = (e: React.FocusEvent<HTMLInputElement>) => {
+    setIsError({
+      ...isError,
+      [e.target.name]: !APPLYINPUT[e.target.name].finalRegExp.test(e.target.value)
     })
+    if (e.target.name !== "invited" && e.target.value === "") {
+      setIsError({
+        ...isError,
+        [e.target.name]: true
+      })
+    }
+    if (e.target.name === "invited" && e.target.value === "") {
+      setIsError({
+        ...isError,
+        [e.target.name]: false
+      })
+    }
   }
 
   const handleMbtiChange = (value: string) => {
@@ -117,40 +149,11 @@ const Apply = () => {
   }
 
   useEffect(() => {
-    console.log(info);
-    if (info.name.length > APPLYINPUT.name.maxLength) {
-      setInfo({ ...info, name: info.name.slice(0, APPLYINPUT.name.maxLength) })
-    }
-    if (info.phone.length > APPLYINPUT.phone.maxLength) {
-      setInfo({ ...info, phone: info.phone.slice(0, APPLYINPUT.phone.maxLength) })
-    }
-    if (info.age.length > APPLYINPUT.age.maxLength) {
-      setInfo({ ...info, age: info.age.slice(0, APPLYINPUT.age.maxLength) })
-    }
-    setIsError({
-      name: info.name !== '' && !APPLYINPUT.name.regExp.test(info.name),
-      phone: info.phone !== '' && !APPLYINPUT.phone.regExp.test(info.phone),
-      age: info.age !== '' && !APPLYINPUT.age.regExp.test(info.age),
-      invited: info.invited !== '' && !APPLYINPUT.invited.regExp.test(info.invited),
-    })
-    // validate();
-  }, [info])
-
-
-  // const validate = () => {
-  //   if (
-  //     APPLYINPUT.name.finalRegExp.test(info.name) &&
-  //     APPLYINPUT.phone.finalRegExp.test(info.phone) &&
-  //     APPLYINPUT.age.finalRegExp.test(info.age) &&
-  //     APPLYINPUT.invited.finalRegExp.test(info.invited)
-  //   ) {
-  //     setIsValidated(true);
-  //   }
-  // }
+    const checked = info.privacy && true
+    setIsValidated(!checked? !isError.name && !isError.age && !isError.phone && !isError.invited : false)
+  }, [isError, info.privacy])
 
   const onClickSubmit = () => {
-    console.log("!!")
-    apply(info)
   }
 
   return (
@@ -159,19 +162,26 @@ const Apply = () => {
         <div className='flex flex-col w-full gap-6 items-center'>
           <ApplyCheckboxButton onChange={handlePrivacyChange} title={STRING.applyPrivacyTitle} text={STRING.applyPrivacyText} subtext={STRING.applyPrivacySubText} />
           <ApplyInputField title={APPLYINPUT.round.title} name={APPLYINPUT.round.type} placeholder={""} value={info.round} isError={false} handleChange={() => { }} />
-          <ApplyInputField title={APPLYINPUT.name.title} name={APPLYINPUT.name.type} placeholder={APPLYINPUT.name.placeholder} value={info.name} isError={isError.name} handleChange={handleChange} />
+          <ApplyInputField title={APPLYINPUT.name.title} name={APPLYINPUT.name.type} placeholder={APPLYINPUT.name.placeholder} value={info.name} isError={isError.name} handleChange={handleChange} onBlur={validateChange} onKeyDown={() => { }} />
           <ApplyBooleanPicker title={STRING.applyGenderTitle} first={STRING.applyGenderFirst} second={STRING.applyGenderSecond} onChange={handleGenderChange} />
-          <ApplyInputField title={APPLYINPUT.phone.title} name={APPLYINPUT.phone.type} placeholder={APPLYINPUT.phone.placeholder} value={info.phone} isError={isError.phone} handleChange={handleChange} />
-          <ApplyInputField title={APPLYINPUT.age.title} name={APPLYINPUT.age.type} placeholder={APPLYINPUT.age.placeholder} value={info.age} isError={isError.age} handleChange={handleChange} />
+          <ApplyInputField title={APPLYINPUT.phone.title} name={APPLYINPUT.phone.type} placeholder={APPLYINPUT.phone.placeholder} value={info.phone} isError={isError.phone} handleChange={handleChange} onBlur={validateChange} onKeyDown={() => { }} />
+          <ApplyInputField title={APPLYINPUT.age.title} name={APPLYINPUT.age.type} placeholder={APPLYINPUT.age.placeholder} value={info.age} isError={isError.age} handleChange={handleChange} onBlur={validateChange} onKeyDown={() => { }} />
           <ApplyMbtiPicker onChange={handleMbtiChange} />
-          <ApplyInputField title={APPLYINPUT.invited.title} name={APPLYINPUT.invited.type} placeholder={APPLYINPUT.invited.placeholder} value={info.invited} isError={isError.invited} handleChange={handleChange} />
+          <ApplyInputField title={APPLYINPUT.invited.title} name={APPLYINPUT.invited.type} placeholder={APPLYINPUT.invited.placeholder} value={info.invited} isError={isError.invited} handleChange={handleChange} onBlur={validateChange} onKeyDown={() => { }} />
           <ApplyBooleanPicker title={STRING.applyChangeSeatTitle} first={STRING.applyChangeSeatFirst} second={STRING.applyChangeSeatSecond} onChange={handleChangeSeatChange} />
           <ApplyFourItemPicker title={STRING.applyBottlesTitle} items={[STRING.applyBottlesFirst, STRING.applyBottlesSecond, STRING.applyBottlesThird, STRING.applyBottlesFourth]} onChange={handleBottlesChange} />
           <ApplyTransfer onChange={handleTransferChange} title={STRING.applyTransferTitle} text={STRING.applyTransferText} subtext={STRING.applyTransferSubText} />
         </div>
-        <div>
-          <AmsrButton title={STRING.headerApplyButton} onClick={onClickSubmit} />
-        </div>
+        {isValidated ?
+          <motion.div
+            whileTap={{
+              scale: 0.95,
+              transition: { duration: 0.1 }
+            }}>
+            <AmsrButton title={STRING.headerApplyButton} onClick={onClickSubmit} className="w-48 h-12 bg-gradient-to-tr  from-rose-300 via-fuchsia-400 to-teal-300" />
+          </motion.div>
+          : <Button disabled={!isValidated} className="w-48 h-12 bg-neutral-500" >{STRING.headerApplyButton} </Button>
+        }
       </div>
     </div >
   )

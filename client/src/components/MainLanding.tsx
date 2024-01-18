@@ -66,7 +66,7 @@ const MainLanding = () => {
           <motion.div className='flex justify-center pt-4'
             animate={{ y: [0.1 * width, 0], opacity: [0, 1] }}
             transition={{ type: easeInOut, duration: 1.5, delay: 1.5 }}>
-            <AmsrButton title={STRING.mainLandingApplyButton} onClick={goApply} />
+            <AmsrButton title={STRING.mainLandingApplyButton} onClick={goApply} className="w-48 h-12"/>
           </motion.div>
         </div>
       </motion.div>
