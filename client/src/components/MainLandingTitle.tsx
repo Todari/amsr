@@ -69,9 +69,9 @@ const MainLandingTitle = () => {
       </div>
       <div className="inset-0 w-full z-40">
         <motion.div className="absolute top-[30dvh] left-[10vw] aspect-square w-16"
-          // animate={{ x: [-0.3 * width, 0] }}
-          // transition={{ ease: "easeInOut", duration: 0.5 }}
-          style={{x:scrollYProgress}}
+          animate={{ x: [-0.3 * width, 0] }}
+          transition={{ ease: "easeInOut", duration: 0.5 }}
+          // style={{x:scrollYProgress}}
         >
           <motion.div
             animate={{ rotate: 360 }}

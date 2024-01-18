@@ -4,6 +4,7 @@ import STRING from "../constants/String";
 import { useEffect, useState } from "react";
 import AmsrButton from "../components/AmsrButton";
 import {ReactComponent as AMSR_LOGO} from "../asset/amsr-logo.svg"
+import {ReactComponent as AMSR_LOGO2} from "../asset/amsr1.svg"
 
 type HeaderProp = {
   visible: boolean
@@ -35,7 +36,7 @@ const Header = ({ visible }: HeaderProp) => {
         {/* <div className="text-left text-2xl text-stone-800 truncat">
           {STRING.headerLogo}
         </div> */}
-        <AMSR_LOGO className="aspect-square h-24"/>
+        <AMSR_LOGO2 className="aspect-square h-24"/>
       </motion.div>
     </div>
     <div className='shrink h-full py-3.5 flex justify-center'>
