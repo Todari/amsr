@@ -33,7 +33,7 @@ const MainLanding = () => {
       <motion.div className='flex flex-col items-center h-full w-full pt-24 p-8 justify-center'
         style={{
         }}>
-        <div className="grow p-8 rounded-3xl bg-emerald-100/50 backdrop-blur h-full w-full flex flex-col gap-4 items-center justify-center">
+        <div className="grow p-8 rounded-3xl h-full w-full flex flex-col gap-4 items-center justify-center bg-gradient-to-tr  from-rose-200/70 via-fuchsia-200/70 to-teal-200/70">
           <div className='flex flex-col'>
             <motion.div className='text-center text-2xl font-bold text-neutral-700 font-ClimateCrisisKRVF'
               animate={{ x: [-0.1 * width, 0], opacity: [0, 1] }}

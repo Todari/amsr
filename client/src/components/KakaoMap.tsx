@@ -33,7 +33,7 @@ const KakaoMap = () => {
       //   height: "350px",
       // }}
       level={3}
-      className="aspect-square max-h-96 w-full">
+      className="aspect-square max-h-96 w-full rounded-3xl border-fuchsia-200 border-2">
         <MapMarker // 마커를 생성합니다
         position={{
           // 마커가 표시될 위치입니다
