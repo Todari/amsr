@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_레이어_2" data-name="레이어 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 236.76 236.76">
+  <defs>
+    <style>
+      .r2-1 {
+        fill: #4ade80;
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <g id="_레이어_1-2" data-name="레이어 1">
+    <path class="r2-1" d="M0,236.76V0h202.94v33.82h33.82v101.47h-67.65v33.82h33.82v33.82h33.82v33.82h-101.47v-33.82h-33.82v-33.82h-33.82v67.65H0ZM67.65,135.29h67.65v-33.82h33.82V33.82h-101.47v101.47Z"/>
+  </g>
+</svg>

@@ -29,8 +29,8 @@ const Apply = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
-    console.log(scrollPosition.prev, scrollPosition.current)
-    console.log(showHeader)
+    // console.log(scrollPosition.prev, scrollPosition.current)
+    // console.log(showHeader)
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
