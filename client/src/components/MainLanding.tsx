@@ -30,25 +30,25 @@ const MainLanding = () => {
 
   return (
     <div className="snap-always snap-center flex w-full max-w-5xl h-[100dvh] items-center justify-center">
-      <motion.div className='flex flex-col items-center'
+      <motion.div className='flex flex-col items-center h-full w-full pt-24 p-8 justify-center'
         style={{
         }}>
-        <div className="p-12 rounded-3xl bg-white/50 backdrop-blur drop-shadow-md shadow-clay">
-          <div className='p-4'>
-            <motion.div className='text-center text-3xl font-bold text-black'
+        <div className="grow p-8 rounded-3xl bg-emerald-100/50 backdrop-blur h-full w-full flex flex-col gap-4 items-center justify-center">
+          <div className='flex flex-col'>
+            <motion.div className='text-center text-2xl font-bold text-neutral-700 font-ClimateCrisisKRVF'
               animate={{ x: [-0.1 * width, 0], opacity: [0, 1] }}
               transition={{ type: easeInOut, duration: 1.5 }}
             >
               {STRING.mainLandingTitlePrefix}
             </motion.div>
-            <motion.div className='text-center text-3xl font-bold text-black'
+            <motion.div className='text-center text-2xl font-bold text-neutral-700 font-ClimateCrisisKRVF'
               animate={{ x: [0.1 * width, 0], opacity: [0, 1] }}
               transition={{ type: easeInOut, duration: 1.5, delay: 0.1 }}
             >
               {STRING.mainLandingTitleSuffix}
             </motion.div>
           </div>
-          <div className='p-2 flex flex-col'>
+          <div className='flex flex-col'>
             <motion.div className='text-center text-l font-medium text-stone-500'
               animate={{ y: [0.1 * width, 0], opacity: [0, 1] }}
               transition={{ type: easeInOut, duration: 1.5, delay: 0.2 }}
@@ -63,7 +63,7 @@ const MainLanding = () => {
             </motion.div>
           </div>
           <KakaoMap />
-          <motion.div className='p-4 flex justify-center'
+          <motion.div className='flex justify-center pt-4'
             animate={{ y: [0.1 * width, 0], opacity: [0, 1] }}
             transition={{ type: easeInOut, duration: 1.5, delay: 1.5 }}>
             <AmsrButton title={STRING.mainLandingApplyButton} onClick={goApply} />
