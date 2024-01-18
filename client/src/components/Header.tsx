@@ -36,7 +36,7 @@ const Header = ({ visible }: HeaderProp) => {
         {/* <div className="text-left text-2xl text-stone-800 truncat">
           {STRING.headerLogo}
         </div> */}
-        <AMSR_LOGO2 className="aspect-square h-24"/>
+        <AMSR_LOGO className="aspect-square h-24"/>
       </motion.div>
     </div>
     <div className='shrink h-full py-3.5 flex justify-center'>
