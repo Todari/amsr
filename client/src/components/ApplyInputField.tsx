@@ -13,18 +13,17 @@ type ApplyInputFieldProps = {
   isError: boolean;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: FocusEventHandler<HTMLInputElement>
-  onKeyDown? : KeyboardEventHandler<HTMLInputElement>
   
 }
 
 
-const ApplyInputField = ({ title, name, placeholder, value, isError, handleChange, onBlur, onKeyDown }: ApplyInputFieldProps) => {
+const ApplyInputField = ({ title, name, placeholder, value, isError, handleChange, onBlur }: ApplyInputFieldProps) => {
   let isDisabled = false;
   if (isError) {
     return (
       <div className="grid w-full max-w-3xl items-center gap-3">
         <TypographyLarge text={title} className="text-rose-500" />
-        <Input className="" type="text" id={title} disabled={isDisabled} name={name} placeholder={placeholder} value={value} onChange={handleChange} onBlur={onBlur} onKeyDown={onKeyDown}/>
+        <Input className="" type="text" id={title} disabled={isDisabled} name={name} placeholder={placeholder} value={value} onChange={handleChange} onBlur={onBlur} onKeyPress={(e) => {e.key === 'Enter' && (document.activeElement as HTMLElement).blur()}} />
         <div className="pt-1 text-rose-500 text-sm">
           {STRING.applyInputErrorPrefix}{title}{STRING.applyInputErrorSuffix}
         </div>
@@ -37,7 +36,7 @@ const ApplyInputField = ({ title, name, placeholder, value, isError, handleChang
   return (
     <div className="grid w-full max-w-3xl items-center gap-3">
       <TypographyLarge text={title} />
-      <Input type="text" id={title} disabled={isDisabled} name={name} placeholder={placeholder} value={value} onChange={handleChange} onBlur={onBlur} onKeyDown={onKeyDown}/>
+      <Input type="text" id={title} disabled={isDisabled} name={name} placeholder={placeholder} value={value} onChange={handleChange} onBlur={onBlur} onKeyPress={(e) => {e.key === 'Enter' && (document.activeElement as HTMLElement).blur()}} />
 
     </div>
   )

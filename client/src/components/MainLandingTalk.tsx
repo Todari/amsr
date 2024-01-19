@@ -5,7 +5,7 @@ const MainLandingTalk = () => {
   return (
     <div className="snap-always bg-neutral-800 snap-center w-full h-[100dvh] flex flex-col items-center justify-center pt-20 p-4">
       <div className="w-full h-fit max-w-3xl flex flex-col gap-0">
-        <MainLandingTalkAvatar opponent={false} name={"민지"} text="민지야 감이 암사대 ㄱㄱ" />
+        <MainLandingTalkAvatar opponent={false} name={"민지"} text="하니야 같이 암사대 ㄱㄱ" />
         <MainLandingTalkAvatar opponent={true} name={"하니"} text="그게 머임?" />
         <MainLandingTalkAvatar opponent={false} name={"민지"}
         text="아무사람대잔치라고 하는 파티인데"
