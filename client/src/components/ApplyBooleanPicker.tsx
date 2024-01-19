@@ -19,7 +19,7 @@ const ApplyBooleanPicker = ({ title, first, second, onChange }: ApplyBooleanPick
 
   return (
     // <div>
-      <div className="grid w-full max-w-3xl items-center gap-1.5">
+      <div className="grid w-full max-w-3xl items-center gap-3">
         <TypographyLarge text={title} />
         <div className='flex flex-row gap-4'>
           <div className='grow'>
