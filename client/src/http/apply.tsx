@@ -45,7 +45,7 @@ const apply = async (info: Info): Promise<boolean> => {
       return false
     });
 
-  return false
+  return true
 };
 
 export { apply };
