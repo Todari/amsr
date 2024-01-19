@@ -9,10 +9,11 @@ const setCookie = () => {
   document.cookie = `auth=1; expires=' + ${date.toUTCString()}; path=/;`;
 }
 
-const apply = async (info: Info): Promise<boolean> => {
-  // const url = 'http://localhost:8080/user'
-  const url = 'https://amsr-server.site/user'
+const apply = async (info: Info): Promise<boolean|string> => {
+  const url = 'http://localhost:8080/user'
+  // const url = 'https://amsr-server.site/user'
   setCookie();
+  let result = '';
   await axios.post(url,
     {
       'round': info.round,
@@ -37,15 +38,16 @@ const apply = async (info: Info): Promise<boolean> => {
   )
     .then((response) => {
       console.log(response.data);
-      return true
+      result = response.data
+      return result
     })
     .catch((response) => {
       console.log('Error!');
       console.log(response.date);
+      result = response.data
       return false
     });
-
-  return true
+  return result
 };
 
 export { apply };

@@ -9,7 +9,7 @@ const MainLandingInfo = () => {
   const { width, height } = useAppSelector((state) => state.screenSize)
 
   return (
-    <div className="snap-always bg-emerald-100/70 snap-center w-full h-[100dvh] flex flex-col items-center justify-center pt-20 p-4">
+    <div className="snap-always bg-emerald-100/70 snap-center w-full h-[100vh] flex flex-col items-center justify-center pt-20 p-4">
       <div className="w-full h-full max-w-3xl flex flex-col gap-2 items-center justify-center">
         <div className="basis-1/4 bg-white border-violet-200 border-2 rounded-3xl flex flex-col p-4 justify-end">
           <TypographyP text="소개시켜줄 친구와 열정만 가져오세요" className="font-bold"></TypographyP>

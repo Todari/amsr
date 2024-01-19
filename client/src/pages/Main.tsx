@@ -40,7 +40,7 @@ const Main = () => {
   // }
   
   return (
-    <div id="snap-container" className='snap-mandatory snap-y overflow-scroll h-[100dvh]'>
+    <div id="snap-container" className='snap-mandatory snap-y overflow-scroll h-[100vh]'>
       <div ref={containerRef} className="flex flex-col items-center">
         <MainLandingTitle />
         <MainLandingTalk />

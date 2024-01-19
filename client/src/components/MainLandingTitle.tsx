@@ -32,7 +32,7 @@ const MainLandingTitle = () => {
   // }, [])
 
   return (
-    <div ref={containerRef} className="relative snap-always snap-center w-full h-[100dvh] flex flex-col items-center justify-center">
+    <div ref={containerRef} className="relative snap-always snap-center w-full h-[100vh] flex flex-col items-center justify-center">
       <div className="relative inset-0 w-full  max-w-5xl ">
         <motion.div className="inset-0 text-center font-ClimateCrisisKRVF text-fuchsia-400/50 text-4xl"
           animate={{ y: [-height, 0] }}
