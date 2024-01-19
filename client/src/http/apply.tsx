@@ -10,8 +10,8 @@ const setCookie = () => {
 }
 
 const apply = async (info: Info): Promise<boolean|string> => {
-  const url = 'http://localhost:8080/user'
-  // const url = 'https://amsr-server.site/user'
+  // const url = 'http://localhost:8080/user'
+  const url = 'https://amsr-server.site/user'
   setCookie();
   let result = '';
   await axios.post(url,
@@ -48,6 +48,9 @@ const apply = async (info: Info): Promise<boolean|string> => {
       return false
     });
   return result
+
+  //CORS 오류가 발생했을 때 정상으로 넘어가는 case가 있었음
+  //추후 생성된 ID와 DB비교 등을 통해서 확인 logic 만들 것
 };
 
 export { apply };
