@@ -1,5 +1,6 @@
 import axios from "axios"
 import type Info from "../model/info"
+import { useToast } from "@/components/ui/use-toast";
 
 const setCookie = () => {
 
@@ -8,12 +9,11 @@ const setCookie = () => {
   document.cookie = `auth=1; expires=' + ${date.toUTCString()}; path=/;`;
 }
 
-
-const apply = async (info: Info) => {
+const apply = async (info: Info): Promise<boolean> => {
   // const url = 'http://localhost:8080/user'
   const url = 'https://amsr-server.site/user'
   setCookie();
-  axios.post(url,
+  await axios.post(url,
     {
       'round': info.round,
       'privacy': info.privacy,
@@ -45,6 +45,7 @@ const apply = async (info: Info) => {
       return false
     });
 
+  return false
 };
 
 export { apply };

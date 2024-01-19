@@ -25,7 +25,7 @@ const ApplyMbtiPicker = ({ onChange }: ApplyMbtiPickerProp) => {
   });
 
   useEffect(() => {
-    console.log(mbti);
+    // console.log(mbti);
     const mbtiArr = [];
     if (mbti.e) {
       mbtiArr.push(STRING.mbtiE)

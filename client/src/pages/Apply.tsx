@@ -16,9 +16,11 @@ import { useAppSelector } from "@/hooks";
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button";
 import { apply } from "@/http/apply";
+import { useToast } from "@/components/ui/use-toast";
+import SubmitLoading from "../components/SubmitLoading";
+import { useNavigate } from "react-router-dom";
 
 type InfoError = {
-  init: boolean;
   name: boolean;
   phone: boolean;
   age: boolean;
@@ -61,7 +63,6 @@ const Apply = () => {
   });
 
   const [isError, setIsError] = useState<InfoError>({
-    init: true,
     name: false,
     phone: false,
     age: false,
@@ -148,45 +149,75 @@ const Apply = () => {
     })
   }
 
+  const goHome = () => { navigate('/'); }
+
   useEffect(() => {
     const checked = info.privacy && true
     if (checked === true && info.age !== "" && info.name !== "" && info.phone !== "") {
-      setIsValidated(!isError.init && !isError.name && !isError.age && !isError.phone && !isError.invited)
+      setIsValidated(!isError.name && !isError.age && !isError.phone && !isError.invited)
     }
+    // console.log(checked, isError)
   }, [isError, info.privacy])
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast()
+  const navigate = useNavigate()
+
   const onClickSubmit = async () => {
-    await apply(info);
+    setIsSubmitting(true);
+    const result = await apply(info);
+    // await new Promise(f => setTimeout(f, 30000));
+    setIsSubmitting(false);
+
+    if (result) {
+      toast({
+        title: STRING.transferCopyComplete,
+        description: STRING.transferCopyCompleteDescription,
+      })
+      goHome();
+    } else {
+      toast({
+        title: STRING.transferCopyComplete,
+        description: STRING.transferCopyCompleteDescription,
+      })
+    }
   }
 
   return (
-    <div className="pt-24 p-8 space-y-4 w-full">
-      <div className='flex flex-col gap-16 items-center justify-center'>
-        <div className='flex flex-col w-full gap-6 items-center'>
-          <ApplyCheckboxButton onChange={handlePrivacyChange} title={STRING.applyPrivacyTitle} text={STRING.applyPrivacyText} subtext={STRING.applyPrivacySubText} />
-          <ApplyInputField title={APPLYINPUT.round.title} name={APPLYINPUT.round.type} placeholder={""} value={info.round} isError={false} handleChange={() => { }} />
-          <ApplyInputField title={APPLYINPUT.name.title} name={APPLYINPUT.name.type} placeholder={APPLYINPUT.name.placeholder} value={info.name} isError={isError.name} handleChange={handleChange} onBlur={validateChange} onKeyDown={() => { }} />
-          <ApplyBooleanPicker title={STRING.applyGenderTitle} first={STRING.applyGenderFirst} second={STRING.applyGenderSecond} onChange={handleGenderChange} />
-          <ApplyInputField title={APPLYINPUT.phone.title} name={APPLYINPUT.phone.type} placeholder={APPLYINPUT.phone.placeholder} value={info.phone} isError={isError.phone} handleChange={handleChange} onBlur={validateChange} onKeyDown={() => { }} />
-          <ApplyInputField title={APPLYINPUT.age.title} name={APPLYINPUT.age.type} placeholder={APPLYINPUT.age.placeholder} value={info.age} isError={isError.age} handleChange={handleChange} onBlur={validateChange} onKeyDown={() => { }} />
-          <ApplyMbtiPicker onChange={handleMbtiChange} />
-          <ApplyInputField title={APPLYINPUT.invited.title} name={APPLYINPUT.invited.type} placeholder={APPLYINPUT.invited.placeholder} value={info.invited} isError={isError.invited} handleChange={handleChange} onBlur={validateChange} onKeyDown={() => { }} />
-          <ApplyBooleanPicker title={STRING.applyChangeSeatTitle} first={STRING.applyChangeSeatFirst} second={STRING.applyChangeSeatSecond} onChange={handleChangeSeatChange} />
-          <ApplyFourItemPicker title={STRING.applyBottlesTitle} items={[STRING.applyBottlesFirst, STRING.applyBottlesSecond, STRING.applyBottlesThird, STRING.applyBottlesFourth]} onChange={handleBottlesChange} />
-          <ApplyTransfer onChange={handleTransferChange} title={STRING.applyTransferTitle} text={STRING.applyTransferText} subtext={STRING.applyTransferSubText} />
+    <div>
+      <div className="pt-24 p-8 space-y-4 w-full">
+        <div className='flex flex-col gap-16 items-center justify-center'>
+          <div className='flex flex-col w-full gap-6 items-center'>
+            <ApplyCheckboxButton onChange={handlePrivacyChange} title={STRING.applyPrivacyTitle} text={STRING.applyPrivacyText} subtext={STRING.applyPrivacySubText} />
+            <ApplyInputField title={APPLYINPUT.round.title} name={APPLYINPUT.round.type} placeholder={""} value={info.round} isError={false} handleChange={() => { }} />
+            <ApplyInputField title={APPLYINPUT.name.title} name={APPLYINPUT.name.type} placeholder={APPLYINPUT.name.placeholder} value={info.name} isError={isError.name} handleChange={handleChange} onBlur={validateChange} onKeyDown={() => { }} />
+            <ApplyBooleanPicker title={STRING.applyGenderTitle} first={STRING.applyGenderFirst} second={STRING.applyGenderSecond} onChange={handleGenderChange} />
+            <ApplyInputField title={APPLYINPUT.phone.title} name={APPLYINPUT.phone.type} placeholder={APPLYINPUT.phone.placeholder} value={info.phone} isError={isError.phone} handleChange={handleChange} onBlur={validateChange} onKeyDown={() => { }} />
+            <ApplyInputField title={APPLYINPUT.age.title} name={APPLYINPUT.age.type} placeholder={APPLYINPUT.age.placeholder} value={info.age} isError={isError.age} handleChange={handleChange} onBlur={validateChange} onKeyDown={() => { }} />
+            <ApplyMbtiPicker onChange={handleMbtiChange} />
+            <ApplyInputField title={APPLYINPUT.invited.title} name={APPLYINPUT.invited.type} placeholder={APPLYINPUT.invited.placeholder} value={info.invited} isError={isError.invited} handleChange={handleChange} onBlur={validateChange} onKeyDown={() => { }} />
+            <ApplyBooleanPicker title={STRING.applyChangeSeatTitle} first={STRING.applyChangeSeatFirst} second={STRING.applyChangeSeatSecond} onChange={handleChangeSeatChange} />
+            <ApplyFourItemPicker title={STRING.applyBottlesTitle} items={[STRING.applyBottlesFirst, STRING.applyBottlesSecond, STRING.applyBottlesThird, STRING.applyBottlesFourth]} onChange={handleBottlesChange} />
+            <ApplyTransfer onChange={handleTransferChange} title={STRING.applyTransferTitle} text={STRING.applyTransferText} subtext={STRING.applyTransferSubText} />
+          </div>
+          {!isValidated ?
+            <motion.div
+              whileTap={{
+                scale: 0.95,
+                transition: { duration: 0.1 }
+              }}>
+              <AmsrButton title={STRING.headerApplyButton} onClick={onClickSubmit} className="w-48 h-12 bg-gradient-to-tr  from-rose-300 via-fuchsia-400 to-teal-300" />
+            </motion.div>
+            : <Button disabled={!isValidated} className="w-48 h-12 bg-neutral-500" >{STRING.headerApplyButton} </Button>
+          }
         </div>
-        {isValidated ?
-          <motion.div
-            whileTap={{
-              scale: 0.95,
-              transition: { duration: 0.1 }
-            }}>
-            <AmsrButton title={STRING.headerApplyButton} onClick={onClickSubmit} className="w-48 h-12 bg-gradient-to-tr  from-rose-300 via-fuchsia-400 to-teal-300" />
-          </motion.div>
-          : <Button disabled={!isValidated} className="w-48 h-12 bg-neutral-500" >{STRING.headerApplyButton} </Button>
-        }
-      </div>
-    </div >
+      </div >
+      {
+        isSubmitting ?
+          <SubmitLoading />
+          : null
+      }
+    </div>
   )
 }
 
