@@ -1,24 +1,25 @@
 import { Map, MapMarker, ZoomControl } from "react-kakao-maps-sdk";
 import { toast } from "./ui/use-toast";
 import STRING from "@/constants/String";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 
 const KakaoMap = () => {
 
-  const handleCopyLocation = async () => {
-    try {
-      await navigator.clipboard.writeText(STRING.mainLandingLocationCopy);
-      toast({
-        title: STRING.locationCopyComplete,
-        description: STRING.locationCopyCompleteDescription,
-      })
-    } catch (error) {
-      toast({
-        title: STRING.locationCopyFail,
-        description: STRING.locationCopyFailDescription,
-      })
-    }
-  };
+  // const handleCopyLocation = async () => {
+  //   try {
+  //     await navigator.clipboard.writeText(STRING.mainLandingLocationCopy);
+  //     toast({
+  //       title: STRING.locationCopyComplete,
+  //       description: STRING.locationCopyCompleteDescription,
+  //     })
+  //   } catch (error) {
+  //     toast({
+  //       title: STRING.locationCopyFail,
+  //       description: STRING.locationCopyFailDescription,
+  //     })
+  //   }
+  // };
 
   return (
     <Map id="map"
@@ -34,17 +35,23 @@ const KakaoMap = () => {
       // }}
       level={3}
       className="aspect-square max-h-96 w-full rounded-3xl border-fuchsia-200 border-2">
+      <CopyToClipboard
+        text={STRING.mainLandingLocationCopy}
+        onCopy={() => toast({
+          title: STRING.locationCopyComplete,
+          description: STRING.locationCopyCompleteDescription,
+        })}>
         <MapMarker // 마커를 생성합니다
-        position={{
-          // 마커가 표시될 위치입니다
-          lat: 37.55808645471607,
-          lng: 126.93474760233823,
-        }}
-        clickable={true} // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
-        onClick={handleCopyLocation}
-      />
-      <ZoomControl position={"RIGHT"}/>
-      </Map>
+          position={{
+            // 마커가 표시될 위치입니다
+            lat: 37.55808645471607,
+            lng: 126.93474760233823,
+          }}
+          clickable={true} // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
+          // onClick={handleCopyLocation}
+        /></CopyToClipboard>
+      <ZoomControl position={"RIGHT"} />
+    </Map>
   )
 }
 
