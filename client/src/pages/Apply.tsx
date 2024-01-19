@@ -171,14 +171,14 @@ const Apply = () => {
 
     if (result) {
       toast({
-        title: STRING.transferCopyComplete,
-        description: STRING.transferCopyCompleteDescription,
+        title: STRING.applySubmitComplete,
+        description: STRING.applySubmitCompleteDescription,
       })
       goHome();
     } else {
       toast({
-        title: STRING.transferCopyComplete,
-        description: STRING.transferCopyCompleteDescription,
+        title: STRING.applySubmitFail,
+        description: STRING.applySubmitFailDescription,
       })
     }
   }

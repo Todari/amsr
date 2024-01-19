@@ -21,6 +21,10 @@ enum STRING {
   applyTransferText2 = '카카오뱅크 3333-01-3428220 이태훈',
   applyTransferSubText = '계좌번호를 복사하려면 여기를 클릭하세요!',
   applyTransferSubText2 = '송금 완료 후 신청이 확인돼요',
+  applySubmitComplete = '신청이 완료되었어요!',
+  applySubmitCompleteDescription = '참가비 입금 확인 후 카카오톡 오픈채팅방에 초대할게요',
+  applySubmitFail = '신청서 전송이 완료되지 않았어요 :(',
+  applySubmitFailDescription = '데이터 문제일 수 있으니 설정을 확인해 주세요',
 
   applyInputErrorPrefix = '유효하지 않은 ',
   applyInputErrorSuffix = '입니다.',
