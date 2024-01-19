@@ -16,28 +16,28 @@ const Main = () => {
   const containerRef = useRef(null)
   const [containerPosition, setContainerPosition] = useState({ x: 0, y: 0 })
 
-  useEffect(() => {
-    if (container) {
-      container?.addEventListener('scroll', handleScroll)
-      console.log(scrollPosition.prev, scrollPosition.current)
-      console.log(showHeader)
-      return () => {
-        container?.removeEventListener('scroll', handleScroll)
-      }
-    }
-  }, [container?.scrollTop])
+  // useEffect(() => {
+  //   if (container) {
+  //     container?.addEventListener('scroll', handleScroll)
+  //     console.log(scrollPosition.prev, scrollPosition.current)
+  //     console.log(showHeader)
+  //     return () => {
+  //       container?.removeEventListener('scroll', handleScroll)
+  //     }
+  //   }
+  // }, [container?.scrollTop])
 
-  const handleScroll = () => {
-    if (container) {
-      const prev = scrollPosition.current
-      setScrollPosition({ prev: prev, current: container.scrollTop });
-      // setScrollPosition({ prev: 0, current: 0 })
-    }
-    dispatch(setShowHeader(scrollPosition.prev >= scrollPosition.current))
-    if (scrollPosition.current < 50) {
-      dispatch(setShowHeader(true))
-    }
-  }
+  // const handleScroll = () => {
+  //   if (container) {
+  //     const prev = scrollPosition.current
+  //     setScrollPosition({ prev: prev, current: container.scrollTop });
+  //     // setScrollPosition({ prev: 0, current: 0 })
+  //   }
+  //   dispatch(setShowHeader(scrollPosition.prev >= scrollPosition.current))
+  //   if (scrollPosition.current < 50) {
+  //     dispatch(setShowHeader(true))
+  //   }
+  // }
   
   return (
     <div id="snap-container" className='snap-mandatory snap-y overflow-scroll h-[100dvh]'>

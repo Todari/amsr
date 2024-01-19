@@ -206,9 +206,9 @@ const Apply = () => {
                 scale: 0.95,
                 transition: { duration: 0.1 }
               }}>
-              <AmsrButton title={STRING.headerApplyButton} onClick={onClickSubmit} className="w-48 h-12 bg-gradient-to-tr  from-rose-300 via-fuchsia-400 to-teal-300" />
+              <AmsrButton title={STRING.headerApplyButton} onClick={onClickSubmit} className="font-bold w-48 h-12 bg-gradient-to-tr  from-rose-300 via-fuchsia-400 to-teal-300" />
             </motion.div>
-            : <Button disabled={!isValidated} className="w-48 h-12 bg-neutral-500" >{STRING.headerApplyButton} </Button>
+            : <Button disabled={!isValidated} className="w-48 h-12 bg-neutral-500 font-bold" >{STRING.headerApplyButton} </Button>
           }
         </div>
       </div >

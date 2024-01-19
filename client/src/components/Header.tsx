@@ -40,7 +40,7 @@ const Header = ({ visible }: HeaderProp) => {
       </motion.div>
     </div>
     <div className='shrink h-full py-3.5 flex justify-center'>
-      <AmsrButton title={STRING.headerApplyButton} variant="secondary" onClick={goApply} />
+      <AmsrButton title={STRING.headerApplyButton} variant="secondary" onClick={goApply}/>
     </div>
   </motion.div >)
 }

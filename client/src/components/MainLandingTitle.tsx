@@ -22,17 +22,17 @@ const MainLandingTitle = () => {
   }
   const xTransform = useParallax(scrollYProgress, 100);
 
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    console.log("Page scroll: ", latest)
-  })
-  const doc = document.getElementById('dd')
-  useEffect(() => {
-    console.log(window.scrollY)
-    console.log(doc?.scrollTop)
-  }, [])
+  // useMotionValueEvent(scrollYProgress, "change", (latest) => {
+  //   console.log("Page scroll: ", latest)
+  // })
+  // const doc = document.getElementById('dd')
+  // useEffect(() => {
+    // console.log(window.scrollY)
+    // console.log(doc?.scrollTop)
+  // }, [])
 
   return (
-    <div id='dd' ref={containerRef} className="relative snap-always snap-center w-full h-[100dvh] flex flex-col items-center justify-center">
+    <div ref={containerRef} className="relative snap-always snap-center w-full h-[100dvh] flex flex-col items-center justify-center">
       <div className="relative inset-0 w-full  max-w-5xl ">
         <motion.div className="inset-0 text-center font-ClimateCrisisKRVF text-fuchsia-400/50 text-4xl"
           animate={{ y: [-height, 0] }}
