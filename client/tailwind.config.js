@@ -20,6 +20,12 @@ module.exports = {
       ClimateCrisisKRVF: ["ClimateCrisisKRVF"]
     },
     extend: {
+      backgroundImage: {
+        'avatar-1':"url('../asset/avatar1.png')",
+        'avatar-2':"url('../asset/avatar2.png')"
+      },
+
+
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

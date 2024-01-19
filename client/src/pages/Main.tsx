@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "@/hooks"
 import { setShowHeader } from "@/store/headerStateReducer"
 import scrollPosition from "@/model/scrollPosition"
 import MainLandingInfo from "@/components/MainLandingInfo"
+import MainLandingTalk from "@/components/MainLandingTalk"
 
 const Main = () => {
   let container: null | HTMLElement = document.getElementById('snap-container')
@@ -42,6 +43,7 @@ const Main = () => {
     <div id="snap-container" className='snap-mandatory snap-y overflow-scroll h-[100dvh]'>
       <div ref={containerRef} className="flex flex-col items-center">
         <MainLandingTitle />
+        <MainLandingTalk />
         <MainLandingInfo />
         <MainLanding />
       </div>
