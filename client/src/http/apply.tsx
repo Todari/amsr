@@ -2,7 +2,7 @@ import axios from "axios"
 import type Info from "../model/info"
 
 const setCookie = () => {
-  
+
   var date = new Date();
   date.setTime(date.getTime() + 60 * 60 * 24 * 1000);
   document.cookie = `auth=1; expires=' + ${date.toUTCString()}; path=/;`;
@@ -31,12 +31,19 @@ const apply = async (info: Info) => {
       headers: {
         'Content-type': 'application/json',
         'Accept': 'application/json',
-      }, 
-      withCredentials : true,
+      },
+      withCredentials: true,
     },
   )
-    .then((response) => { console.log(response.data); })
-    .catch((response) => { console.log('Error!') });
+    .then((response) => {
+      console.log(response.data);
+      return true
+    })
+    .catch((response) => {
+      console.log('Error!');
+      console.log(response.date);
+      return false
+    });
 
 };
 

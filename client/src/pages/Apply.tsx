@@ -1,4 +1,4 @@
-import { FocusEventHandler, ReactComponentElement, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ApplyInputField from "../components/ApplyInputField";
 import APPLYINPUT from "../constants/ApplyInput";
 import ApplyMbtiPicker from "../components/ApplyMbtiPicker";
@@ -7,19 +7,18 @@ import ApplyBooleanPicker from "../components/ApplyBooleanPicker";
 import STRING from "../constants/String";
 import ApplyCheckboxButton from "../components/ApplyCheckboxButton";
 import ApplyFourItemPicker from "../components/ApplyFourItemPicker";
-import { CheckedState } from "@radix-ui/react-checkbox";
 import ApplyTransfer from "@/components/ApplyTransfer";
 import Info from "../model/info";
-import { apply } from "@/http/apply";
 import scrollPosition from "@/model/scrollPosition";
 import { useDispatch } from "react-redux";
 import { setShowHeader } from "@/store/headerStateReducer";
 import { useAppSelector } from "@/hooks";
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button";
-import { error } from "console";
+import { apply } from "@/http/apply";
 
 type InfoError = {
+  init: boolean;
   name: boolean;
   phone: boolean;
   age: boolean;
@@ -62,6 +61,7 @@ const Apply = () => {
   });
 
   const [isError, setIsError] = useState<InfoError>({
+    init: true,
     name: false,
     phone: false,
     age: false,
@@ -70,7 +70,7 @@ const Apply = () => {
 
   const [isValidated, setIsValidated] = useState(false)
 
-  const handlePrivacyChange = (checked: void | CheckedState) => {
+  const handlePrivacyChange = (checked: boolean) => {
     setInfo({
       ...info,
       privacy: checked,
@@ -150,10 +150,13 @@ const Apply = () => {
 
   useEffect(() => {
     const checked = info.privacy && true
-    setIsValidated(!checked? !isError.name && !isError.age && !isError.phone && !isError.invited : false)
+    if (checked === true && info.age !== "" && info.name !== "" && info.phone !== "") {
+      setIsValidated(!isError.init && !isError.name && !isError.age && !isError.phone && !isError.invited)
+    }
   }, [isError, info.privacy])
 
-  const onClickSubmit = () => {
+  const onClickSubmit = async () => {
+    await apply(info);
   }
 
   return (

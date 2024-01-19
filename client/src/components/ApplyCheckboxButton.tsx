@@ -1,11 +1,11 @@
-import {  useState } from "react";
+import { useState, useEffect } from "react";
 import PrivacyModal from "./PrivacyModal";
 import { Checkbox } from "@/components/ui/checkbox"
 import { CheckedState } from "@radix-ui/react-checkbox";
 import { TypographyLarge, TypographySmall, TypographyMuted } from "./typography/typography";
 
 type ApplyCheckboxButtonProps = {
-  onChange: (checked: CheckedState) => void,
+  onChange: (checked: boolean) => void,
   title: string,
   text: string,
   subtext: string,
@@ -15,9 +15,13 @@ const ApplyCheckboxButton = ({ onChange, title, text, subtext }: ApplyCheckboxBu
   const [isChecked, setIsChecked] = useState(false);
   const [modalOpened, setModalOpened] = useState(false);
 
+  useEffect(() => {
+    onChange(isChecked);
+  }, [isChecked])
+  
   const handleChecked = () => {
     setIsChecked(!isChecked);
-    onChange(isChecked)
+    // onChange(isChecked)
   }
 
   const changeModalOpened = () => {
@@ -33,19 +37,19 @@ const ApplyCheckboxButton = ({ onChange, title, text, subtext }: ApplyCheckboxBu
 
   return (
     <div className="grid w-full max-w-3xl items-center gap-3">
-      <TypographyLarge text={title}/>
-        <div className="space-y-6 w-full max-w-3xl items-center gap-3">
-              <div className="flex flex-row w-full items-start space-x-3 space-y-0 rounded-md border p-4 shadow">
-                  <Checkbox
-                    checked={isChecked}
-                    onCheckedChange={handleChecked}
-                  />
-                <div className="space-y-1 leading-none">
-                  <TypographySmall text={text}/>
-                  <TypographyMuted text={subtext} onClick={changeModalOpened}/>
-                </div>
-              </div>
+      <TypographyLarge text={title} />
+      <div className="space-y-6 w-full max-w-3xl items-center gap-3">
+        <div className="flex flex-row w-full items-start space-x-3 space-y-0 rounded-md border p-4 shadow">
+          <Checkbox
+            checked={isChecked}
+            onCheckedChange={handleChecked}
+          />
+          <div className="space-y-1 leading-none">
+            <TypographySmall text={text} />
+            <TypographyMuted text={subtext} onClick={changeModalOpened} />
+          </div>
         </div>
+      </div>
       {
         modalOpened ?
           <PrivacyModal handleOpenedChange={changeModalOpened} />
