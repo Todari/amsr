@@ -459,8 +459,6 @@ textarea:focus-visible {
   animation: scenes-drift 90s linear infinite;
 }
 
-.scenes-band:hover .scenes-track { animation-play-state: paused; }
-
 @keyframes scenes-drift {
   to { transform: translateX(-50%); }
 }
