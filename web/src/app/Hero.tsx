@@ -2,15 +2,60 @@
 
 import Link from "next/link";
 import type { PointerEvent as ReactPointerEvent, MouseEvent as ReactMouseEvent } from "react";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const confettiColors = ["#d9ff43", "#5271ff", "#ff6b4a", "#ff87b7", "#171717"];
 
 const prefersReducedMotion = () =>
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+const clamp = (value: number) => Math.max(-1, Math.min(1, value));
+
+type OrientationPermission = {
+  requestPermission?: () => Promise<"granted" | "denied">;
+};
+
 export default function Hero({ applicationsOpen }: { applicationsOpen: boolean }) {
   const heroRef = useRef<HTMLElement>(null);
+  const tiltBaseline = useRef<number | null>(null);
+  const tiltAsked = useRef(false);
+
+  const onTilt = useRef((event: DeviceOrientationEvent) => {
+    const hero = heroRef.current;
+    if (!hero || event.gamma == null || event.beta == null) return;
+    if (tiltBaseline.current === null) tiltBaseline.current = event.beta;
+    hero.style.setProperty("--mx", clamp(event.gamma / 28).toFixed(3));
+    hero.style.setProperty("--my", clamp((event.beta - tiltBaseline.current) / 24).toFixed(3));
+  });
+
+  useEffect(() => {
+    const hero = heroRef.current;
+    if (!hero || prefersReducedMotion()) return;
+
+    let frame = 0;
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        const progress = Math.min(1.2, Math.max(0, window.scrollY / Math.max(1, hero.offsetHeight)));
+        hero.style.setProperty("--sy", progress.toFixed(3));
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    const tilt = onTilt.current;
+    const permission = (DeviceOrientationEvent as unknown as OrientationPermission | undefined)?.requestPermission;
+    const touchDevice = window.matchMedia("(pointer: coarse)").matches;
+    if (touchDevice && typeof permission !== "function") {
+      window.addEventListener("deviceorientation", tilt);
+    }
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("deviceorientation", tilt);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
 
   const follow = (event: ReactPointerEvent<HTMLElement>) => {
     const hero = heroRef.current;
@@ -25,9 +70,22 @@ export default function Hero({ applicationsOpen }: { applicationsOpen: boolean }
     heroRef.current?.style.setProperty("--my", "0");
   };
 
+  const requestTiltOnce = () => {
+    if (tiltAsked.current) return;
+    tiltAsked.current = true;
+    const permission = (DeviceOrientationEvent as unknown as OrientationPermission | undefined)?.requestPermission;
+    if (typeof permission !== "function" || !window.matchMedia("(pointer: coarse)").matches) return;
+    permission()
+      .then((state) => {
+        if (state === "granted") window.addEventListener("deviceorientation", onTilt.current);
+      })
+      .catch(() => {});
+  };
+
   const burst = (event: ReactMouseEvent<HTMLElement>) => {
     const hero = heroRef.current;
     if (!hero || prefersReducedMotion()) return;
+    requestTiltOnce();
     const rect = hero.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;

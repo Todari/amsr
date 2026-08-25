@@ -105,6 +105,7 @@ textarea:focus-visible {
   padding: 20px 16px 18px;
   border-bottom: 2px solid var(--ink);
   isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .hero-grid {
@@ -126,7 +127,7 @@ textarea:focus-visible {
   height: 60%;
   background: radial-gradient(circle, rgb(217 255 67 / 0.9) 0 26%, transparent 62%);
   filter: blur(35px);
-  transform: translate(calc(var(--mx, 0) * 40px), calc(var(--my, 0) * 26px));
+  transform: translate(calc(var(--mx, 0) * 40px), calc(var(--my, 0) * 26px + var(--sy, 0) * -80px));
   transition: transform 600ms ease-out;
 }
 
@@ -166,18 +167,27 @@ textarea:focus-visible {
 .title-copy-2 {
   color: transparent;
   -webkit-text-stroke: 2px var(--coral);
-  transform: translate(calc(-50% + var(--mx, 0) * 22px), calc(-50% - 0.72em + var(--my, 0) * 15px));
+  transform: translate(
+    calc(-50% + var(--mx, 0) * 22px + var(--sy, 0) * -26px),
+    calc(-50% - 0.72em + var(--my, 0) * 15px + var(--sy, 0) * -58px)
+  );
   animation-delay: 120ms;
 }
 .title-copy-4 {
   color: var(--acid);
-  transform: translate(calc(-50% + var(--mx, 0) * -17px), calc(-50% + var(--my, 0) * -12px));
+  transform: translate(
+    calc(-50% + var(--mx, 0) * -17px + var(--sy, 0) * 16px),
+    calc(-50% + var(--my, 0) * -12px + var(--sy, 0) * -22px)
+  );
   -webkit-text-stroke: 2px var(--ink);
   animation-delay: 40ms;
 }
 .title-copy-main {
   color: var(--ink);
-  transform: translate(calc(-50% + var(--mx, 0) * 8px), calc(-50% + 0.72em + var(--my, 0) * 5px));
+  transform: translate(
+    calc(-50% + var(--mx, 0) * 8px),
+    calc(-50% + 0.72em + var(--my, 0) * 5px + var(--sy, 0) * 32px)
+  );
   animation-delay: 0ms;
 }
 
@@ -201,7 +211,10 @@ textarea:focus-visible {
   font-weight: 950;
   box-shadow: 4px 4px 0 var(--ink);
   animation: float 3.5s ease-in-out infinite alternate;
-  transform: translate(calc(var(--mx, 0) * var(--drift-x) * 1px), calc(var(--my, 0) * var(--drift-y) * 1px));
+  transform: translate(
+    calc(var(--mx, 0) * var(--drift-x) * 1px + var(--sy, 0) * var(--drift-x) * -1.8px),
+    calc(var(--my, 0) * var(--drift-y) * 1px + var(--sy, 0) * var(--drift-y) * -2.4px)
+  );
   transition: transform 320ms ease-out, scale 180ms ease;
 }
 
