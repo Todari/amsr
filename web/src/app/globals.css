@@ -126,6 +126,8 @@ textarea:focus-visible {
   height: 60%;
   background: radial-gradient(circle, rgb(217 255 67 / 0.9) 0 26%, transparent 62%);
   filter: blur(35px);
+  transform: translate(calc(var(--mx, 0) * 40px), calc(var(--my, 0) * 26px));
+  transition: transform 600ms ease-out;
 }
 
 .hero-kicker {
@@ -158,11 +160,26 @@ textarea:focus-visible {
   animation: title-drop 720ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+.title-copy { transition: transform 240ms ease-out; }
 .title-copy-1,
 .title-copy-3 { display: none; }
-.title-copy-2 { color: transparent; -webkit-text-stroke: 2px var(--coral); transform: translate(-50%, calc(-50% - 0.72em)); animation-delay: 120ms; }
-.title-copy-4 { color: var(--acid); transform: translate(-50%, -50%); -webkit-text-stroke: 2px var(--ink); animation-delay: 40ms; }
-.title-copy-main { color: var(--ink); transform: translate(-50%, calc(-50% + 0.72em)); animation-delay: 0ms; }
+.title-copy-2 {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--coral);
+  transform: translate(calc(-50% + var(--mx, 0) * 22px), calc(-50% - 0.72em + var(--my, 0) * 15px));
+  animation-delay: 120ms;
+}
+.title-copy-4 {
+  color: var(--acid);
+  transform: translate(calc(-50% + var(--mx, 0) * -17px), calc(-50% + var(--my, 0) * -12px));
+  -webkit-text-stroke: 2px var(--ink);
+  animation-delay: 40ms;
+}
+.title-copy-main {
+  color: var(--ink);
+  transform: translate(calc(-50% + var(--mx, 0) * 8px), calc(-50% + 0.72em + var(--my, 0) * 5px));
+  animation-delay: 0ms;
+}
 
 @keyframes title-drop {
   from { opacity: 0; translate: 0 -80vh; }
@@ -184,14 +201,25 @@ textarea:focus-visible {
   font-weight: 950;
   box-shadow: 4px 4px 0 var(--ink);
   animation: float 3.5s ease-in-out infinite alternate;
+  transform: translate(calc(var(--mx, 0) * var(--drift-x) * 1px), calc(var(--my, 0) * var(--drift-y) * 1px));
+  transition: transform 320ms ease-out, scale 180ms ease;
 }
 
-.orbit-a { top: 17%; left: 8%; background: var(--acid); rotate: -12deg; }
-.orbit-m { top: 22%; right: 8%; background: var(--blue); color: white; rotate: 9deg; animation-delay: -1.1s; }
-.orbit-s { top: 55%; left: 16%; background: var(--coral); rotate: 8deg; animation-delay: -2s; }
-.orbit-r { top: 59%; right: 13%; background: var(--pink); rotate: -8deg; animation-delay: -2.8s; }
+.orbit:hover { scale: 1.2; }
+.orbit:active { scale: 0.88; }
+
+.orbit-a { --drift-x: 34; --drift-y: 24; top: 17%; left: 8%; background: var(--acid); rotate: -12deg; }
+.orbit-m { --drift-x: -26; --drift-y: 20; top: 22%; right: 8%; background: var(--blue); color: white; rotate: 9deg; animation-delay: -1.1s; }
+.orbit-s { --drift-x: 24; --drift-y: -22; top: 55%; left: 16%; background: var(--coral); rotate: 8deg; animation-delay: -2s; }
+.orbit-r { --drift-x: -34; --drift-y: -26; top: 59%; right: 13%; background: var(--pink); rotate: -8deg; animation-delay: -2.8s; }
 
 @keyframes float { to { translate: 0 -12px; rotate: 8deg; } }
+
+.confetti {
+  position: absolute;
+  z-index: 5;
+  pointer-events: none;
+}
 
 .hero-bottom {
   display: grid;

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Hero from "./Hero";
 
 const rules = [
   {
@@ -85,40 +86,7 @@ export default function Home() {
       </header>
 
       <main>
-        <section className="hero" id="top">
-          <div className="hero-grid" aria-hidden="true" />
-          <span className="orbit orbit-a" aria-hidden="true">A</span>
-          <span className="orbit orbit-m" aria-hidden="true">M</span>
-          <span className="orbit orbit-s" aria-hidden="true">S</span>
-          <span className="orbit orbit-r" aria-hidden="true">R</span>
-
-          <div className="hero-kicker">
-            <span>2026 COMEBACK</span>
-            <span>32 PEOPLE</span>
-          </div>
-
-          <div className="title-stage" aria-label="아무사람대잔치">
-            <span className="title-copy title-copy-1" aria-hidden="true">아무사람대잔치</span>
-            <span className="title-copy title-copy-2" aria-hidden="true">아무사람대잔치</span>
-            <span className="title-copy title-copy-3" aria-hidden="true">아무사람대잔치</span>
-            <span className="title-copy title-copy-4" aria-hidden="true">아무사람대잔치</span>
-            <h1 className="title-copy title-copy-main">아무사람대잔치</h1>
-          </div>
-
-          <div className="hero-bottom">
-            <p className="hero-description">
-              친구의 친구가,
-              <br />
-              아직 모르는 내 친구일지도 모르니까.
-            </p>
-            <div className="hero-actions">
-              <Link className="button button-primary" href="/apply">
-                {applicationsOpen ? "참가 신청하기" : "신청서 미리보기"} <Arrow />
-              </Link>
-              <a className="text-link" href="#about">이게 무슨 파티야? ↓</a>
-            </div>
-          </div>
-        </section>
+        <Hero applicationsOpen={applicationsOpen} />
 
         <section className="manifesto section" id="about">
           <div className="section-index">001 / ABOUT</div>
