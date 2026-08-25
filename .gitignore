@@ -1,0 +1,4 @@
+.env.production
+server/data/
+server/amsr-api
+server/amsr-server
