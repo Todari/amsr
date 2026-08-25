@@ -185,13 +185,13 @@ export default function ApplicationForm({ applicationsOpen }: Props) {
           <button
             type="button"
             onClick={() => {
-              navigator.clipboard?.writeText("100181341775").then(
+              navigator.clipboard?.writeText("토스뱅크 100181341775 이태훈 45000원").then(
                 () => setAccountCopied(true),
                 () => setAccountCopied(false),
               );
             }}
           >
-            {accountCopied ? "계좌번호 복사됨 ✓" : "계좌번호 복사"}
+            {accountCopied ? "계좌 정보 복사됨 ✓" : "계좌 정보 복사"}
           </button>
         </div>
         <Link href="/">아무사람대잔치 소개로 돌아가기 ↗</Link>
