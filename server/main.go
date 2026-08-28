@@ -342,8 +342,8 @@ func buildApplication(input createApplicationRequest) (application, string) {
 	if input.DrinkLevel != "none" && input.DrinkLevel != "light" && input.DrinkLevel != "enjoy" {
 		return application{}, "음주 정도를 확인해 주세요."
 	}
-	if len([]rune(strings.Join(strings.Fields(input.OneLiner), ""))) != 12 {
-		return application{}, "한줄 설명은 공백 제외 12자로 입력해 주세요."
+	if length := len([]rune(strings.Join(strings.Fields(input.OneLiner), ""))); length < 1 || length > 12 {
+		return application{}, "한줄 설명은 공백 제외 12자 이내로 입력해 주세요."
 	}
 	if !input.PrivacyConsent {
 		return application{}, "개인정보 수집·이용 동의가 필요합니다."

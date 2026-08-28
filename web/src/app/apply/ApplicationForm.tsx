@@ -85,8 +85,11 @@ const getFieldError = (field: ValidatedField, values: FormValues) => {
   if (field === "drinkLevel" && !values.drinkLevel) {
     return "음주 정도를 선택해 주세요.";
   }
-  if (field === "oneLiner" && oneLinerLength(values.oneLiner) !== 12) {
-    return "공백 빼고 딱 12자로 맞춰 주세요.";
+  if (field === "oneLiner") {
+    const length = oneLinerLength(values.oneLiner);
+    if (length < 1 || length > 12) {
+      return "공백 빼고 12자 이내로 입력해 주세요.";
+    }
   }
   if (field === "privacyConsent" && !values.privacyConsent) {
     return "참가 신청을 위해 개인정보 수집·이용 동의가 필요합니다.";

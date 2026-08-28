@@ -146,11 +146,13 @@ func TestApplicationValidation(t *testing.T) {
 
 func TestApplicationRejectsWrongOneLinerLength(t *testing.T) {
 	handler, _ := newTestHandler(t)
-	input := validApplication()
-	input.OneLiner = "너무 짧은 소개"
-	response := request(t, handler, http.MethodPost, "/applications", input, true)
-	if response.Code != http.StatusBadRequest {
-		t.Fatalf("expected 400, got %d", response.Code)
+	for _, oneLiner := range []string{"", "공백 제외 열두 자가 넘어가는 소개"} {
+		input := validApplication()
+		input.OneLiner = oneLiner
+		response := request(t, handler, http.MethodPost, "/applications", input, true)
+		if response.Code != http.StatusBadRequest {
+			t.Fatalf("expected 400 for %q, got %d", oneLiner, response.Code)
+		}
 	}
 }
 

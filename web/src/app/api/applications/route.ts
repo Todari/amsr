@@ -60,7 +60,8 @@ export async function POST(request: Request) {
   const year = Number(payload.birthYear);
   const validYear = Number.isInteger(year) && year >= 1980 && year <= 2010;
   const validMbti = /^(ISTJ|ISFJ|INFJ|INTJ|ISTP|ISFP|INFP|INTP|ESTP|ESFP|ENFP|ENTP|ESTJ|ESFJ|ENFJ|ENTJ)$/.test(payload.mbti);
-  const validOneLiner = [...payload.oneLiner.replace(/\s/g, "")].length === 12;
+  const oneLinerLength = [...payload.oneLiner.replace(/\s/g, "")].length;
+  const validOneLiner = oneLinerLength >= 1 && oneLinerLength <= 12;
   const hasRequiredGuest = payload.attendanceType !== "returning" || payload.guestName.length >= 2;
 
   if (
