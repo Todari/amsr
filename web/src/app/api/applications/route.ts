@@ -7,6 +7,7 @@ type ApplicationPayload = {
   birthYear?: string;
   mbti?: string;
   drinkLevel?: string;
+  oneLiner?: string;
   requirements?: string;
   privacyConsent?: boolean;
   website?: string;
@@ -47,6 +48,7 @@ export async function POST(request: Request) {
     birthYear: text(raw.birthYear, 4),
     mbti: text(raw.mbti, 4).toUpperCase(),
     drinkLevel: text(raw.drinkLevel, 16),
+    oneLiner: text(raw.oneLiner, 40),
     requirements: text(raw.requirements, 500),
     privacyConsent: raw.privacyConsent === true,
     consentedAt: new Date().toISOString(),
@@ -58,6 +60,7 @@ export async function POST(request: Request) {
   const year = Number(payload.birthYear);
   const validYear = Number.isInteger(year) && year >= 1980 && year <= 2010;
   const validMbti = /^(ISTJ|ISFJ|INFJ|INTJ|ISTP|ISFP|INFP|INTP|ESTP|ESFP|ENFP|ENTP|ESTJ|ESFJ|ENFJ|ENTJ)$/.test(payload.mbti);
+  const validOneLiner = [...payload.oneLiner.replace(/\s/g, "")].length === 12;
   const hasRequiredGuest = payload.attendanceType !== "returning" || payload.guestName.length >= 2;
 
   if (
@@ -67,6 +70,7 @@ export async function POST(request: Request) {
     !validYear ||
     !validMbti ||
     !payload.drinkLevel ||
+    !validOneLiner ||
     !payload.privacyConsent ||
     !hasRequiredGuest
   ) {

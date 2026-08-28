@@ -22,12 +22,15 @@ type FormValues = {
   birthYear: string;
   mbti: string;
   drinkLevel: string;
+  oneLiner: string;
   requirements: string;
   privacyConsent: boolean;
   website: string;
 };
 
-type ValidatedField = "guestName" | "name" | "phone" | "birthYear" | "mbti" | "drinkLevel" | "privacyConsent";
+const oneLinerLength = (value: string) => [...value.replace(/\s/g, "")].length;
+
+type ValidatedField = "guestName" | "name" | "phone" | "birthYear" | "mbti" | "drinkLevel" | "oneLiner" | "privacyConsent";
 type FieldErrors = Partial<Record<ValidatedField, string>>;
 type TouchedFields = Partial<Record<ValidatedField, boolean>>;
 
@@ -40,6 +43,7 @@ const initialValues: FormValues = {
   birthYear: "",
   mbti: "",
   drinkLevel: "",
+  oneLiner: "",
   requirements: "",
   privacyConsent: false,
   website: "",
@@ -52,6 +56,7 @@ const validatedFields: ValidatedField[] = [
   "birthYear",
   "mbti",
   "drinkLevel",
+  "oneLiner",
   "privacyConsent",
 ];
 
@@ -79,6 +84,9 @@ const getFieldError = (field: ValidatedField, values: FormValues) => {
   }
   if (field === "drinkLevel" && !values.drinkLevel) {
     return "음주 정도를 선택해 주세요.";
+  }
+  if (field === "oneLiner" && oneLinerLength(values.oneLiner) !== 12) {
+    return "공백 빼고 딱 12자로 맞춰 주세요.";
   }
   if (field === "privacyConsent" && !values.privacyConsent) {
     return "참가 신청을 위해 개인정보 수집·이용 동의가 필요합니다.";
@@ -124,7 +132,7 @@ export default function ApplicationForm({ applicationsOpen }: Props) {
   const stepOneReady =
     values.attendanceType === "first" ||
     (values.attendanceType === "returning" && !getFieldError("guestName", values));
-  const stepTwoFields: ValidatedField[] = ["name", "phone", "birthYear", "mbti", "drinkLevel", "privacyConsent"];
+  const stepTwoFields: ValidatedField[] = ["name", "phone", "birthYear", "mbti", "drinkLevel", "oneLiner", "privacyConsent"];
   const stepTwoReady = stepTwoFields.every((field) => !getFieldError(field, values));
 
   const goNext = () => {
@@ -363,6 +371,24 @@ export default function ApplicationForm({ applicationsOpen }: Props) {
             </select>
             {fieldErrors.drinkLevel && (
               <small id="drinkLevel-error" className={styles.fieldError} role="alert">{fieldErrors.drinkLevel}</small>
+            )}
+          </label>
+          <label className={styles.field}>
+            <span>나에 대한 한줄 설명 <b>필수</b></span>
+            <input
+              name="oneLiner"
+              value={values.oneLiner}
+              onChange={(event) => update("oneLiner", event.target.value)}
+              onBlur={() => validateOnBlur("oneLiner")}
+              placeholder="낯가리지만 금방 친해지는 편"
+              maxLength={30}
+              autoComplete="off"
+              aria-invalid={Boolean(fieldErrors.oneLiner)}
+              aria-describedby={fieldErrors.oneLiner ? "oneLiner-error" : "oneLiner-count"}
+            />
+            <small id="oneLiner-count">공백 제외 {oneLinerLength(values.oneLiner)} / 12자</small>
+            {fieldErrors.oneLiner && (
+              <small id="oneLiner-error" className={styles.fieldError} role="alert">{fieldErrors.oneLiner}</small>
             )}
           </label>
           <label className={styles.field}>

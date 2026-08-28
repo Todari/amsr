@@ -45,6 +45,7 @@ type application struct {
 	BirthYear      int    `json:"birthYear"`
 	MBTI           string `json:"mbti"`
 	DrinkLevel     string `json:"drinkLevel"`
+	OneLiner       string `json:"oneLiner"`
 	Requirements   string `json:"requirements"`
 	PrivacyConsent bool   `json:"privacyConsent"`
 	ConsentVersion string `json:"consentVersion"`
@@ -64,6 +65,7 @@ type createApplicationRequest struct {
 	BirthYear      string `json:"birthYear"`
 	MBTI           string `json:"mbti"`
 	DrinkLevel     string `json:"drinkLevel"`
+	OneLiner       string `json:"oneLiner"`
 	Requirements   string `json:"requirements"`
 	PrivacyConsent bool   `json:"privacyConsent"`
 	ConsentVersion string `json:"consentVersion"`
@@ -314,6 +316,7 @@ func buildApplication(input createApplicationRequest) (application, string) {
 	input.BirthYear = strings.TrimSpace(input.BirthYear)
 	input.MBTI = strings.ToUpper(strings.TrimSpace(input.MBTI))
 	input.DrinkLevel = strings.TrimSpace(input.DrinkLevel)
+	input.OneLiner = strings.TrimSpace(input.OneLiner)
 	input.Requirements = strings.TrimSpace(input.Requirements)
 	input.ConsentVersion = strings.TrimSpace(input.ConsentVersion)
 
@@ -339,6 +342,9 @@ func buildApplication(input createApplicationRequest) (application, string) {
 	if input.DrinkLevel != "none" && input.DrinkLevel != "light" && input.DrinkLevel != "enjoy" {
 		return application{}, "음주 정도를 확인해 주세요."
 	}
+	if len([]rune(strings.Join(strings.Fields(input.OneLiner), ""))) != 12 {
+		return application{}, "한줄 설명은 공백 제외 12자로 입력해 주세요."
+	}
 	if !input.PrivacyConsent {
 		return application{}, "개인정보 수집·이용 동의가 필요합니다."
 	}
@@ -360,6 +366,7 @@ func buildApplication(input createApplicationRequest) (application, string) {
 		BirthYear:      year,
 		MBTI:           input.MBTI,
 		DrinkLevel:     input.DrinkLevel,
+		OneLiner:       input.OneLiner,
 		Requirements:   input.Requirements,
 		PrivacyConsent: true,
 		ConsentVersion: input.ConsentVersion,

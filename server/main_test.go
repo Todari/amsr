@@ -50,6 +50,7 @@ func validApplication() createApplicationRequest {
 		BirthYear:      "1996",
 		MBTI:           "ENFP",
 		DrinkLevel:     "light",
+		OneLiner:       "낯가리지만 금방 친해지는 편",
 		Requirements:   "채식 메뉴가 있으면 좋아요.",
 		PrivacyConsent: true,
 		ConsentVersion: "2026-08-21",
@@ -137,6 +138,16 @@ func TestApplicationValidation(t *testing.T) {
 	handler, _ := newTestHandler(t)
 	input := validApplication()
 	input.Phone = "01012"
+	response := request(t, handler, http.MethodPost, "/applications", input, true)
+	if response.Code != http.StatusBadRequest {
+		t.Fatalf("expected 400, got %d", response.Code)
+	}
+}
+
+func TestApplicationRejectsWrongOneLinerLength(t *testing.T) {
+	handler, _ := newTestHandler(t)
+	input := validApplication()
+	input.OneLiner = "너무 짧은 소개"
 	response := request(t, handler, http.MethodPost, "/applications", input, true)
 	if response.Code != http.StatusBadRequest {
 		t.Fatalf("expected 400, got %d", response.Code)

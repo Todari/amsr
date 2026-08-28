@@ -21,6 +21,7 @@ type Application = {
   birthYear: number;
   mbti: string;
   drinkLevel: "none" | "light" | "enjoy";
+  oneLiner: string;
   requirements: string;
   privacyConsent: boolean;
   consentedAt: string;
@@ -141,6 +142,7 @@ export default async function AdminPage() {
                   </dd>
                 </div>
                 <div><dt>접수</dt><dd>{formatDate(application.createdAt)}</dd></div>
+                <div><dt>한줄</dt><dd>{application.oneLiner || "미입력"}</dd></div>
               </dl>
               {application.requirements && (
                 <div className={styles.requirements}>
