@@ -475,7 +475,7 @@ textarea:focus-visible {
 }
 
 .scenes-band {
-  padding: 26px 0 58px;
+  padding: 26px 0 34px;
   border-top: 2px solid var(--ink);
   background:
     repeating-linear-gradient(-45deg, rgb(245 241 230 / 0.045) 0 2px, transparent 2px 14px),
@@ -496,6 +496,8 @@ textarea:focus-visible {
 
 .scenes-scroller {
   overflow-x: auto;
+  overflow-y: hidden;
+  padding: 22px 0 20px;
   scrollbar-width: none;
   cursor: grab;
   -webkit-tap-highlight-color: transparent;
@@ -764,7 +766,8 @@ textarea:focus-visible {
   .scenes { padding: 0; }
   .scenes-heading { padding: 110px 5vw 64px; }
   .scenes-meta { padding-inline: 5vw; }
-  .scenes-band { padding-bottom: 72px; }
+  .scenes-band { padding-bottom: 44px; }
+  .scenes-scroller { padding: 26px 0 26px; }
   .scene-print { margin-right: 38px; padding: 10px; }
   .scene-print img { height: 340px; }
   .section-heading { grid-template-columns: 0.7fr 2fr; }
