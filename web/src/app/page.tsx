@@ -135,13 +135,22 @@ export default function Home() {
             <h2>오랜만에,<br />다시 엽니다.</h2>
             <dl className="event-facts">
               <div><dt>인원</dt><dd>32명</dd></div>
-              <div><dt>나이</dt><dd>20대 중반—30대 초반</dd></div>
               <div><dt>일정</dt><dd>9월 12일 토요일</dd></div>
               <div>
                 <dt>장소</dt>
                 <dd>
-                  <a href="https://naver.me/F1rGEh3l" target="_blank" rel="noreferrer">스페이스M ↗</a>
+                  스페이스M
                   <br />서울 마포구 양화로15길 17 4층
+                  <span className="map-links">
+                    <a href="https://naver.me/F1rGEh3l" target="_blank" rel="noreferrer">네이버 지도 ↗</a>
+                    <a
+                      href="https://map.kakao.com/link/map/스페이스M,37.5545421,126.9190133"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      카카오맵 ↗
+                    </a>
+                  </span>
                 </dd>
               </div>
               <div><dt>참가비</dt><dd>45,000원</dd></div>

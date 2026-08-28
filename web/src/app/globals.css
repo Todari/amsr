@@ -618,7 +618,33 @@ textarea:focus-visible {
 }
 
 .event-facts dd { margin: 0; font-size: 0.88rem; font-weight: 800; line-height: 1.5; }
-.event-facts dd a { border-bottom: 2px solid currentColor; font-weight: 900; }
+
+.event-facts .map-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.event-facts .map-links a {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  box-shadow: 3px 3px 0 var(--ink);
+  transition: translate 150ms ease, box-shadow 150ms ease;
+}
+
+.event-facts .map-links a:hover {
+  translate: -2px -2px;
+  box-shadow: 5px 5px 0 var(--ink);
+}
 .event-content .button { border-color: var(--ink); }
 
 .closing {
