@@ -494,14 +494,19 @@ textarea:focus-visible {
   letter-spacing: 0.08em;
 }
 
+.scenes-scroller {
+  overflow-x: auto;
+  scrollbar-width: none;
+  cursor: grab;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.scenes-scroller::-webkit-scrollbar { display: none; }
+.scenes-scroller:active { cursor: grabbing; }
+
 .scenes-track {
   display: flex;
   width: max-content;
-  animation: scenes-drift 90s linear infinite;
-}
-
-@keyframes scenes-drift {
-  to { transform: translateX(-50%); }
 }
 
 .scenes-run {
@@ -544,6 +549,9 @@ textarea:focus-visible {
   width: auto;
   height: 230px;
   border: 1px solid var(--ink);
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .event {
@@ -757,7 +765,4 @@ textarea:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-  .scenes-band { overflow-x: auto; }
-  .scenes-track { animation: none; }
-  .scenes-run[aria-hidden="true"] { display: none; }
 }
