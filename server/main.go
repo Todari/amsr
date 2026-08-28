@@ -41,6 +41,7 @@ type application struct {
 	GuestName      string `json:"guestName"`
 	InvitedBy      string `json:"invitedBy"`
 	Name           string `json:"name"`
+	Gender         string `json:"gender"`
 	Phone          string `json:"phone"`
 	BirthYear      int    `json:"birthYear"`
 	MBTI           string `json:"mbti"`
@@ -61,6 +62,7 @@ type createApplicationRequest struct {
 	GuestName      string `json:"guestName"`
 	InvitedBy      string `json:"invitedBy"`
 	Name           string `json:"name"`
+	Gender         string `json:"gender"`
 	Phone          string `json:"phone"`
 	BirthYear      string `json:"birthYear"`
 	MBTI           string `json:"mbti"`
@@ -312,6 +314,7 @@ func buildApplication(input createApplicationRequest) (application, string) {
 	input.GuestName = strings.TrimSpace(input.GuestName)
 	input.InvitedBy = strings.TrimSpace(input.InvitedBy)
 	input.Name = strings.TrimSpace(input.Name)
+	input.Gender = strings.TrimSpace(input.Gender)
 	input.Phone = nonDigitPattern.ReplaceAllString(input.Phone, "")
 	input.BirthYear = strings.TrimSpace(input.BirthYear)
 	input.MBTI = strings.ToUpper(strings.TrimSpace(input.MBTI))
@@ -328,6 +331,9 @@ func buildApplication(input createApplicationRequest) (application, string) {
 	}
 	if len([]rune(input.Name)) < 2 || len([]rune(input.Name)) > 40 {
 		return application{}, "이름을 확인해 주세요."
+	}
+	if input.Gender != "male" && input.Gender != "female" {
+		return application{}, "성별을 확인해 주세요."
 	}
 	if !phonePattern.MatchString(input.Phone) {
 		return application{}, "휴대전화 번호를 확인해 주세요."
@@ -362,6 +368,7 @@ func buildApplication(input createApplicationRequest) (application, string) {
 		GuestName:      input.GuestName,
 		InvitedBy:      input.InvitedBy,
 		Name:           input.Name,
+		Gender:         input.Gender,
 		Phone:          input.Phone,
 		BirthYear:      year,
 		MBTI:           input.MBTI,

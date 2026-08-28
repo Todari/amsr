@@ -17,6 +17,7 @@ type Application = {
   guestName: string;
   invitedBy: string;
   name: string;
+  gender: "male" | "female" | "";
   phone: string;
   birthYear: number;
   mbti: string;
@@ -130,6 +131,7 @@ export default async function AdminPage() {
             </div>
             <div className={styles.applicationInfo}>
               <dl className={styles.details}>
+                <div><dt>성별</dt><dd>{application.gender === "male" ? "남성" : application.gender === "female" ? "여성" : "미입력"}</dd></div>
                 <div><dt>출생</dt><dd>{application.birthYear}년</dd></div>
                 <div><dt>MBTI</dt><dd>{application.mbti || "미입력"}</dd></div>
                 <div><dt>음주</dt><dd>{drinkLabels[application.drinkLevel]}</dd></div>

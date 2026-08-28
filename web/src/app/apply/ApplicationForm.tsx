@@ -18,6 +18,7 @@ type FormValues = {
   guestName: string;
   invitedBy: string;
   name: string;
+  gender: string;
   phone: string;
   birthYear: string;
   mbti: string;
@@ -30,7 +31,16 @@ type FormValues = {
 
 const oneLinerLength = (value: string) => [...value.replace(/\s/g, "")].length;
 
-type ValidatedField = "guestName" | "name" | "phone" | "birthYear" | "mbti" | "drinkLevel" | "oneLiner" | "privacyConsent";
+type ValidatedField =
+  | "guestName"
+  | "name"
+  | "gender"
+  | "phone"
+  | "birthYear"
+  | "mbti"
+  | "drinkLevel"
+  | "oneLiner"
+  | "privacyConsent";
 type FieldErrors = Partial<Record<ValidatedField, string>>;
 type TouchedFields = Partial<Record<ValidatedField, boolean>>;
 
@@ -39,6 +49,7 @@ const initialValues: FormValues = {
   guestName: "",
   invitedBy: "",
   name: "",
+  gender: "",
   phone: "",
   birthYear: "",
   mbti: "",
@@ -52,6 +63,7 @@ const initialValues: FormValues = {
 const validatedFields: ValidatedField[] = [
   "guestName",
   "name",
+  "gender",
   "phone",
   "birthYear",
   "mbti",
@@ -69,6 +81,9 @@ const getFieldError = (field: ValidatedField, values: FormValues) => {
   }
   if (field === "name" && values.name.trim().length < 2) {
     return "이름을 두 글자 이상 입력해 주세요.";
+  }
+  if (field === "gender" && !values.gender) {
+    return "성별을 선택해 주세요.";
   }
   if (field === "phone" && !/^01[016789]\d{7,8}$/.test(values.phone.replaceAll("-", ""))) {
     return "연락 가능한 휴대전화 번호를 확인해 주세요.";
@@ -135,7 +150,16 @@ export default function ApplicationForm({ applicationsOpen }: Props) {
   const stepOneReady =
     values.attendanceType === "first" ||
     (values.attendanceType === "returning" && !getFieldError("guestName", values));
-  const stepTwoFields: ValidatedField[] = ["name", "phone", "birthYear", "mbti", "drinkLevel", "oneLiner", "privacyConsent"];
+  const stepTwoFields: ValidatedField[] = [
+    "name",
+    "gender",
+    "phone",
+    "birthYear",
+    "mbti",
+    "drinkLevel",
+    "oneLiner",
+    "privacyConsent",
+  ];
   const stepTwoReady = stepTwoFields.every((field) => !getFieldError(field, values));
 
   const goNext = () => {
@@ -357,25 +381,45 @@ export default function ApplicationForm({ applicationsOpen }: Props) {
               )}
             </label>
           </div>
-          <label className={styles.field}>
-            <span>술은 어느 정도? <b>필수</b></span>
-            <select
-              name="drinkLevel"
-              value={values.drinkLevel}
-              onChange={(event) => update("drinkLevel", event.target.value)}
-              onBlur={() => validateOnBlur("drinkLevel")}
-              aria-invalid={Boolean(fieldErrors.drinkLevel)}
-              aria-describedby={fieldErrors.drinkLevel ? "drinkLevel-error" : undefined}
-            >
-              <option value="">선택해 주세요</option>
-              <option value="none">안마셔요</option>
-              <option value="light">가볍게 마셔요</option>
-              <option value="enjoy">잘 마시는 편이에요</option>
-            </select>
-            {fieldErrors.drinkLevel && (
-              <small id="drinkLevel-error" className={styles.fieldError} role="alert">{fieldErrors.drinkLevel}</small>
-            )}
-          </label>
+          <div className={styles.twoColumns}>
+            <label className={styles.field}>
+              <span>성별 <b>필수</b></span>
+              <select
+                name="gender"
+                value={values.gender}
+                onChange={(event) => update("gender", event.target.value)}
+                onBlur={() => validateOnBlur("gender")}
+                aria-invalid={Boolean(fieldErrors.gender)}
+                aria-describedby={fieldErrors.gender ? "gender-error" : undefined}
+              >
+                <option value="">선택해 주세요</option>
+                <option value="male">남성</option>
+                <option value="female">여성</option>
+              </select>
+              {fieldErrors.gender && (
+                <small id="gender-error" className={styles.fieldError} role="alert">{fieldErrors.gender}</small>
+              )}
+            </label>
+            <label className={styles.field}>
+              <span>술은 어느 정도? <b>필수</b></span>
+              <select
+                name="drinkLevel"
+                value={values.drinkLevel}
+                onChange={(event) => update("drinkLevel", event.target.value)}
+                onBlur={() => validateOnBlur("drinkLevel")}
+                aria-invalid={Boolean(fieldErrors.drinkLevel)}
+                aria-describedby={fieldErrors.drinkLevel ? "drinkLevel-error" : undefined}
+              >
+                <option value="">선택해 주세요</option>
+                <option value="none">안마셔요</option>
+                <option value="light">가볍게 마셔요</option>
+                <option value="enjoy">잘 마시는 편이에요</option>
+              </select>
+              {fieldErrors.drinkLevel && (
+                <small id="drinkLevel-error" className={styles.fieldError} role="alert">{fieldErrors.drinkLevel}</small>
+              )}
+            </label>
+          </div>
           <label className={styles.field}>
             <span>나에 대한 한줄 설명 <b>필수</b></span>
             <input

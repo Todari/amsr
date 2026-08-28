@@ -3,6 +3,7 @@ type ApplicationPayload = {
   guestName?: string;
   invitedBy?: string;
   name?: string;
+  gender?: string;
   phone?: string;
   birthYear?: string;
   mbti?: string;
@@ -44,6 +45,7 @@ export async function POST(request: Request) {
     guestName: text(raw.guestName, 40),
     invitedBy: text(raw.invitedBy, 40),
     name: text(raw.name, 40),
+    gender: text(raw.gender, 8),
     phone: text(raw.phone, 20).replace(/\D/g, ""),
     birthYear: text(raw.birthYear, 4),
     mbti: text(raw.mbti, 4).toUpperCase(),
@@ -56,6 +58,7 @@ export async function POST(request: Request) {
   };
 
   const validAttendance = payload.attendanceType === "first" || payload.attendanceType === "returning";
+  const validGender = payload.gender === "male" || payload.gender === "female";
   const validPhone = /^01[016789]\d{7,8}$/.test(payload.phone);
   const year = Number(payload.birthYear);
   const validYear = Number.isInteger(year) && year >= 1980 && year <= 2010;
@@ -66,6 +69,7 @@ export async function POST(request: Request) {
 
   if (
     !validAttendance ||
+    !validGender ||
     payload.name.length < 2 ||
     !validPhone ||
     !validYear ||

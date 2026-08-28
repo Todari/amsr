@@ -46,6 +46,7 @@ func validApplication() createApplicationRequest {
 		AttendanceType: "first",
 		InvitedBy:      "초대한 사람",
 		Name:           "테스트 참가자",
+		Gender:         "male",
 		Phone:          "010-1234-5678",
 		BirthYear:      "1996",
 		MBTI:           "ENFP",
