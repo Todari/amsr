@@ -175,7 +175,7 @@ export default function ApplicationForm({ applicationsOpen }: Props) {
         <div className={styles.payment}>
           <div>
             <span>참가비</span>
-            <strong>40,000원</strong>
+            <strong>50,000원</strong>
           </div>
           <div>
             <span>입금 계좌</span>
@@ -185,7 +185,7 @@ export default function ApplicationForm({ applicationsOpen }: Props) {
           <button
             type="button"
             onClick={() => {
-              navigator.clipboard?.writeText("토스뱅크 100181341775 이태훈 40000원").then(
+              navigator.clipboard?.writeText("토스뱅크 100181341775 이태훈 50000원").then(
                 () => setAccountCopied(true),
                 () => setAccountCopied(false),
               );
