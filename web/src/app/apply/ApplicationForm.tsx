@@ -220,7 +220,7 @@ export default function ApplicationForm({ applicationsOpen }: Props) {
           <button
             type="button"
             onClick={() => {
-              navigator.clipboard?.writeText("토스뱅크 100181341775 이태훈 45000원").then(
+              navigator.clipboard?.writeText("45000원 토스뱅크 이태훈 100181341775").then(
                 () => setAccountCopied(true),
                 () => setAccountCopied(false),
               );
