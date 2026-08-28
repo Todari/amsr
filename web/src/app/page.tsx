@@ -192,7 +192,7 @@ export default function Home() {
                   <br />서울 마포구 양화로15길 17 4층
                 </dd>
               </div>
-              <div><dt>참가비</dt><dd>45,000원</dd></div>
+              <div><dt>참가비</dt><dd>40,000원</dd></div>
             </dl>
             <Link className="button button-dark" href="/apply">
               {applicationsOpen ? "32명 안에 들어가기" : "신청서 먼저 보기"} <Arrow />
