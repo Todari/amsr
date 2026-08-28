@@ -153,7 +153,13 @@ export default function Home() {
                   </span>
                 </dd>
               </div>
-              <div><dt>참가비</dt><dd>45,000원</dd></div>
+              <div>
+                <dt>참가비</dt>
+                <dd>
+                  45,000원
+                  <br /><span className="fact-sub">토스뱅크 100117758134 (이태훈)</span>
+                </dd>
+              </div>
             </dl>
             <Link className="button button-dark" href="/apply">
               {applicationsOpen ? "32명 안에 들어가기" : "신청서 먼저 보기"} <Arrow />

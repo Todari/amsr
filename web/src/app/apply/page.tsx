@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ApplicationForm from "./ApplicationForm";
+import PaymentInfo from "./PaymentInfo";
 
 export const metadata: Metadata = {
   title: "참가 신청 | 아무사람대잔치",
@@ -33,6 +34,10 @@ export default function ApplyPage() {
             <span>신청 서버를 연결하면 이 안내 없이 바로 접수할 수 있어요.</span>
           </div>
         )}
+        <details className="apply-payment">
+          <summary>참가비 입금 안내 보기 ↓</summary>
+          <PaymentInfo />
+        </details>
       </section>
 
       <ApplicationForm applicationsOpen={applicationsOpen} />

@@ -748,6 +748,32 @@ textarea:focus-visible {
 
 .preview-notice strong { font-size: 0.82rem; }
 
+.apply-payment { margin-top: 26px; }
+
+.apply-payment summary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 14px;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.74rem;
+  font-weight: 900;
+  box-shadow: 3px 3px 0 var(--ink);
+  user-select: none;
+}
+
+.apply-payment summary::-webkit-details-marker { display: none; }
+.apply-payment[open] summary { background: var(--acid); }
+
+.fact-sub {
+  font-size: 0.76rem;
+  font-weight: 700;
+  opacity: 0.85;
+}
+
 @media (min-width: 760px) {
   .site-frame { border-inline-width: 2px; }
   .topbar { grid-template-columns: 1fr auto auto; }

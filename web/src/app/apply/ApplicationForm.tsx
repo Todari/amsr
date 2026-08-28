@@ -2,6 +2,7 @@
 
 import { FormEvent, useMemo, useState } from "react";
 import Link from "next/link";
+import PaymentInfo from "./PaymentInfo";
 import styles from "./ApplicationForm.module.css";
 
 type AttendanceType = "" | "first" | "returning";
@@ -121,7 +122,6 @@ export default function ApplicationForm({ applicationsOpen }: Props) {
   const [touchedFields, setTouchedFields] = useState<TouchedFields>({});
   const [submissionError, setSubmissionError] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const [accountCopied, setAccountCopied] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const progress = useMemo(() => `${Math.round((step / 2) * 100)}%`, [step]);
@@ -207,28 +207,7 @@ export default function ApplicationForm({ applicationsOpen }: Props) {
         <span>DONE!</span>
         <h2>신청서를 받았어요.</h2>
         <p>아래 계좌로 참가비를 입금해 주세요. 입금이 확인되면 참가 확정 안내를 보내드려요.</p>
-        <div className={styles.payment}>
-          <div>
-            <span>참가비</span>
-            <strong>45,000원</strong>
-          </div>
-          <div>
-            <span>입금 계좌</span>
-            <strong>토스뱅크 100117758134</strong>
-            <small>예금주 이태훈 · 신청하신 분 이름으로 입금해 주세요.</small>
-          </div>
-          <button
-            type="button"
-            onClick={() => {
-              navigator.clipboard?.writeText("45000원 토스뱅크 이태훈 100117758134").then(
-                () => setAccountCopied(true),
-                () => setAccountCopied(false),
-              );
-            }}
-          >
-            {accountCopied ? "계좌 정보 복사됨 ✓" : "계좌 정보 복사"}
-          </button>
-        </div>
+        <PaymentInfo />
         <Link href="/">아무사람대잔치 소개로 돌아가기 ↗</Link>
       </section>
     );
