@@ -135,7 +135,13 @@ export default function Home() {
             <h2>오랜만에,<br />다시 엽니다.</h2>
             <dl className="event-facts">
               <div><dt>인원</dt><dd>32명</dd></div>
-              <div><dt>일정</dt><dd>9월 12일 토요일</dd></div>
+              <div>
+                <dt>일정</dt>
+                <dd>
+                  9월 12일 토요일
+                  <br /><span className="fact-sub">19:00 — 24:00</span>
+                </dd>
+              </div>
               <div>
                 <dt>장소</dt>
                 <dd>
