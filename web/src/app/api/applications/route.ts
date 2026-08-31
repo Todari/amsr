@@ -59,7 +59,7 @@ export async function POST(request: Request) {
 
   const validAttendance = payload.attendanceType === "first" || payload.attendanceType === "returning";
   const validGender = payload.gender === "male" || payload.gender === "female";
-  const validPhone = /^01[016789]\d{7,8}$/.test(payload.phone);
+  const validPhone = /^010\d{8}$/.test(payload.phone);
   const year = Number(payload.birthYear);
   const validYear = Number.isInteger(year) && year >= 1980 && year <= 2010;
   const validMbti = /^(ISTJ|ISFJ|INFJ|INTJ|ISTP|ISFP|INFP|INTP|ESTP|ESFP|ENFP|ENTP|ESTJ|ESFJ|ENFJ|ENTJ)$/.test(payload.mbti);

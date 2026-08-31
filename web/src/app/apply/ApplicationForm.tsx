@@ -86,8 +86,8 @@ const getFieldError = (field: ValidatedField, values: FormValues) => {
   if (field === "gender" && !values.gender) {
     return "성별을 선택해 주세요.";
   }
-  if (field === "phone" && !/^01[016789]\d{7,8}$/.test(values.phone.replaceAll("-", ""))) {
-    return "연락 가능한 휴대전화 번호를 확인해 주세요.";
+  if (field === "phone" && !/^010\d{8}$/.test(values.phone.replaceAll("-", ""))) {
+    return "010으로 시작하는 11자리 번호를 입력해 주세요.";
   }
   if (field === "birthYear") {
     const year = Number(values.birthYear);

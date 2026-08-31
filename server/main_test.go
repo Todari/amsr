@@ -137,11 +137,13 @@ func TestPaidToggle(t *testing.T) {
 
 func TestApplicationValidation(t *testing.T) {
 	handler, _ := newTestHandler(t)
-	input := validApplication()
-	input.Phone = "01012"
-	response := request(t, handler, http.MethodPost, "/applications", input, true)
-	if response.Code != http.StatusBadRequest {
-		t.Fatalf("expected 400, got %d", response.Code)
+	for _, phone := range []string{"01012", "0161234567", "0101234567", "010123456789"} {
+		input := validApplication()
+		input.Phone = phone
+		response := request(t, handler, http.MethodPost, "/applications", input, true)
+		if response.Code != http.StatusBadRequest {
+			t.Fatalf("expected 400 for %q, got %d", phone, response.Code)
+		}
 	}
 }
 

@@ -22,7 +22,7 @@ import (
 const maxRequestBody = 20_000
 
 var (
-	phonePattern    = regexp.MustCompile(`^01[016789][0-9]{7,8}$`)
+	phonePattern    = regexp.MustCompile(`^010[0-9]{8}$`)
 	nonDigitPattern = regexp.MustCompile(`[^0-9]`)
 	mbtiTypes       = []string{
 		"ISTJ", "ISFJ", "INFJ", "INTJ",
