@@ -45,7 +45,7 @@ func validApplication() createApplicationRequest {
 	return createApplicationRequest{
 		AttendanceType: "first",
 		InvitedBy:      "초대한 사람",
-		Name:           "테스트 참가자",
+		Name:           "테스트참가자",
 		Gender:         "male",
 		Phone:          "010-1234-5678",
 		BirthYear:      "1996",
@@ -143,6 +143,18 @@ func TestApplicationValidation(t *testing.T) {
 		response := request(t, handler, http.MethodPost, "/applications", input, true)
 		if response.Code != http.StatusBadRequest {
 			t.Fatalf("expected 400 for %q, got %d", phone, response.Code)
+		}
+	}
+}
+
+func TestApplicationRejectsInvalidName(t *testing.T) {
+	handler, _ := newTestHandler(t)
+	for _, name := range []string{"ㅣㅣ", "김", "abcd", "김 승희", "ㄱㄴㄷ"} {
+		input := validApplication()
+		input.Name = name
+		response := request(t, handler, http.MethodPost, "/applications", input, true)
+		if response.Code != http.StatusBadRequest {
+			t.Fatalf("expected 400 for %q, got %d", name, response.Code)
 		}
 	}
 }

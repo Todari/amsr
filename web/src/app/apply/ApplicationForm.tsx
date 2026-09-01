@@ -32,6 +32,8 @@ type FormValues = {
 
 const oneLinerLength = (value: string) => [...value.replace(/\s/g, "")].length;
 
+const namePattern = /^[가-힣]{2,10}$/;
+
 type ValidatedField =
   | "guestName"
   | "name"
@@ -77,11 +79,11 @@ const isValidatedField = (field: keyof FormValues): field is ValidatedField =>
   validatedFields.includes(field as ValidatedField);
 
 const getFieldError = (field: ValidatedField, values: FormValues) => {
-  if (field === "guestName" && values.attendanceType === "returning" && values.guestName.trim().length < 2) {
-    return "함께 오는 새 사람의 이름을 두 글자 이상 입력해 주세요.";
+  if (field === "guestName" && values.attendanceType === "returning" && !namePattern.test(values.guestName.trim())) {
+    return "함께 오는 새 사람의 이름을 한글 2자 이상으로 입력해 주세요.";
   }
-  if (field === "name" && values.name.trim().length < 2) {
-    return "이름을 두 글자 이상 입력해 주세요.";
+  if (field === "name" && !namePattern.test(values.name.trim())) {
+    return "이름을 한글 2자 이상으로 입력해 주세요.";
   }
   if (field === "gender" && !values.gender) {
     return "성별을 선택해 주세요.";

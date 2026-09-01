@@ -65,12 +65,14 @@ export async function POST(request: Request) {
   const validMbti = /^(ISTJ|ISFJ|INFJ|INTJ|ISTP|ISFP|INFP|INTP|ESTP|ESFP|ENFP|ENTP|ESTJ|ESFJ|ENFJ|ENTJ)$/.test(payload.mbti);
   const oneLinerLength = [...payload.oneLiner.replace(/\s/g, "")].length;
   const validOneLiner = oneLinerLength >= 1 && oneLinerLength <= 12;
-  const hasRequiredGuest = payload.attendanceType !== "returning" || payload.guestName.length >= 2;
+  const namePattern = /^[가-힣]{2,10}$/;
+  const validName = namePattern.test(payload.name);
+  const hasRequiredGuest = payload.attendanceType !== "returning" || namePattern.test(payload.guestName);
 
   if (
     !validAttendance ||
     !validGender ||
-    payload.name.length < 2 ||
+    !validName ||
     !validPhone ||
     !validYear ||
     !validMbti ||

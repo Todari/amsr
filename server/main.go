@@ -23,6 +23,7 @@ const maxRequestBody = 20_000
 
 var (
 	phonePattern    = regexp.MustCompile(`^010[0-9]{8}$`)
+	namePattern     = regexp.MustCompile(`^[가-힣]{2,10}$`)
 	nonDigitPattern = regexp.MustCompile(`[^0-9]`)
 	mbtiTypes       = []string{
 		"ISTJ", "ISFJ", "INFJ", "INTJ",
@@ -326,11 +327,11 @@ func buildApplication(input createApplicationRequest) (application, string) {
 	if input.AttendanceType != "first" && input.AttendanceType != "returning" {
 		return application{}, "참가 경험을 확인해 주세요."
 	}
-	if input.AttendanceType == "returning" && len([]rune(input.GuestName)) < 2 {
-		return application{}, "함께 오는 새 사람의 이름을 확인해 주세요."
+	if input.AttendanceType == "returning" && !namePattern.MatchString(input.GuestName) {
+		return application{}, "함께 오는 새 사람의 이름을 한글 2자 이상으로 입력해 주세요."
 	}
-	if len([]rune(input.Name)) < 2 || len([]rune(input.Name)) > 40 {
-		return application{}, "이름을 확인해 주세요."
+	if !namePattern.MatchString(input.Name) {
+		return application{}, "이름을 한글 2자 이상으로 입력해 주세요."
 	}
 	if input.Gender != "male" && input.Gender != "female" {
 		return application{}, "성별을 확인해 주세요."
